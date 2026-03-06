@@ -590,26 +590,6 @@
           </button>
         </div>
       </div>
-    </div>
-    <div id="mecenat-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:999; align-items:center; justify-content:center; cursor:zoom-out; flex-direction:column; gap:1rem;">
-      <div style="position:relative; width:90vw; max-width:800px;">
-        <div class="slider" id="mecenat-modal-slider" style="border:none; background:transparent;">
-          <div class="slider-track" id="mecenat-modal-track">
-            <div class="slide"><img src="images/mecenat/slide1.png" style="object-fit:contain; background:transparent;" /></div>
-            <div class="slide"><img src="images/mecenat/slide2.png" style="object-fit:contain; background:transparent;" /></div>
-            <div class="slide"><img src="images/mecenat/slide3.png" style="object-fit:contain; background:transparent;" /></div>
-            <div class="slide"><img src="images/mecenat/slide4.png" style="object-fit:contain; background:transparent;" /></div>
-            <div class="slide"><img src="images/mecenat/slide5.png" style="object-fit:contain; background:transparent;" /></div>
-            <div class="slide"><img src="images/mecenat/slide6.png" style="object-fit:contain; background:transparent;" /></div>
-            <div class="slide"><img src="images/mecenat/slide7.png" style="object-fit:contain; background:transparent;" /></div>
-            <div class="slide"><img src="images/mecenat/slide8.png" style="object-fit:contain; background:transparent;" /></div>
-          </div>
-          <button class="slider-btn prev" onclick="event.stopPropagation(); slideMove('mecenat-modal', -1)">←</button>
-          <button class="slider-btn next" onclick="event.stopPropagation(); slideMove('mecenat-modal', 1)">→</button>
-          <div class="slider-counter" id="mecenat-modal-counter">1 / 8</div>
-        </div>
-      </div>
-      <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555;">klicka var som helst för att stänga</p>
     </div>`,
     1: `<div class="project-dropdown-inner" style="align-items:stretch;">
       <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
@@ -884,5 +864,27 @@
     e.target.reset();
   }
 </script>
+<!-- Mecenat modal - lives in body so position:fixed works correctly -->
+<div id="mecenat-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; flex-direction:column; gap:1rem;">
+  <div style="position:relative; width:90vw; max-width:800px;">
+    <div class="slider" id="mecenat-modal-slider" style="border:none; background:transparent;">
+      <div class="slider-track" id="mecenat-modal-track">
+        <div class="slide"><img src="images/mecenat/slide1.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/mecenat/slide2.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/mecenat/slide3.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/mecenat/slide4.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/mecenat/slide5.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/mecenat/slide6.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/mecenat/slide7.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/mecenat/slide8.png" style="object-fit:contain; background:transparent;" /></div>
+      </div>
+      <button class="slider-btn prev" onclick="event.stopPropagation(); slideMove('mecenat-modal', -1)">←</button>
+      <button class="slider-btn next" onclick="event.stopPropagation(); slideMove('mecenat-modal', 1)">→</button>
+      <div class="slider-counter" id="mecenat-modal-counter">1 / 8</div>
+    </div>
+  </div>
+  <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555;">klicka var som helst för att stänga</p>
+</div>
+
 </body>
 </html>
