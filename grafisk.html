@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kreativt — Artur Rekstad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root { --black: #0a0a0a; --white: #f5f0e8; --red: #e63000; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; color: var(--white); font-family: 'Space Mono', monospace; min-height: 100vh; cursor: crosshair; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--black); display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 0 2rem; border-bottom: 2px solid #1a1a1a; }
+    .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: .15em; text-transform: uppercase; padding: 1rem 0; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--red); }
+    nav ul { list-style: none; display: flex; }
+    nav ul li a { display: block; padding: .85rem 1.2rem; color: var(--white); text-decoration: none; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; border-left: 1px solid #222; transition: background .15s; }
+    nav ul li a:hover { background: var(--red); }
+    .page-header { padding: 8rem 3rem 2rem; border-bottom: 1px solid #1a1a1a; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+    .page-header h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(3rem, 8vw, 7rem); line-height: .9; text-transform: uppercase; letter-spacing: -.02em; }
+    .page-header h1 span { -webkit-text-stroke: 1px #444; color: transparent; }
+    .page-header p { margin-top: 1rem; font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: #555; }
+    .filters { display: flex; gap: .5rem; padding-bottom: .5rem; }
+    .filter-btn { background: none; border: 1px solid #333; color: #555; font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; padding: .5rem 1rem; cursor: crosshair; transition: all .15s; }
+    .filter-btn:hover { border-color: #666; color: var(--white); }
+    .filter-btn.active { background: var(--white); color: var(--black); border-color: var(--white); }
+    .scatter-field { position: relative; padding: 4rem 0 8rem; }
+    .img-card { position: absolute; cursor: zoom-in; transform-origin: center center; will-change: transform; animation: floatCard var(--float-dur, 6s) ease-in-out infinite; animation-delay: var(--float-delay, 0s); }
+    @keyframes floatCard {
+      0%   { transform: rotate(var(--rot)) translateY(0px); }
+      50%  { transform: rotate(var(--rot)) translateY(var(--float-y, -10px)); }
+      100% { transform: rotate(var(--rot)) translateY(0px); }
+    }
+    .img-card:hover { z-index: 200 !important; animation-play-state: paused; transform: rotate(var(--rot)) scale(1.05) !important; transition: transform .2s ease; }
+    .img-card img { display: block; width: 100%; height: 100%; object-fit: contain; border: 1px solid #1e1e1e; filter: grayscale(15%); transition: filter .2s, box-shadow .2s; }
+    .img-card:hover img { filter: grayscale(0%); box-shadow: 0 20px 60px rgba(0,0,0,.9); }
+    #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.97); z-index: 9999; align-items: center; justify-content: center; flex-direction: column; gap: 1.5rem; cursor: zoom-out; padding: 2rem; }
+    #lightbox.active { display: flex; }
+    #lightbox img { max-width: 85vw; max-height: 82vh; object-fit: contain; }
+    #lightbox-caption { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: #444; }
+    #lightbox-close { position: fixed; top: 1.5rem; right: 2rem; background: none; border: none; color: #555; font-family: 'Space Mono', monospace; font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; cursor: crosshair; transition: color .15s; }
+    #lightbox-close:hover { color: var(--red); }
+    .lb-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: 1px solid #333; color: #555; font-family: 'Space Mono', monospace; font-size: 1rem; padding: .7rem 1rem; cursor: crosshair; transition: border-color .15s, color .15s; }
+    .lb-arrow:hover { border-color: var(--red); color: var(--white); }
+    .lb-arrow.prev { left: 1.5rem; }
+    .lb-arrow.next { right: 1.5rem; }
+    .scatter-label { position: fixed; bottom: 1.5rem; left: 2rem; font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: #2a2a2a; pointer-events: none; }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">ARTUR&nbsp;<span>REKSTAD</span></a>
+  <ul>
+    <li><a href="index.html#om-mig">Om mig</a></li>
+    <li><a href="index.html#projekt">Projekt</a></li>
+    <li><a href="index.html#cv">CV</a></li>
+    <li><a href="index.html#kontakt">Kontakt</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div>
+    <h1>Foto &amp;<br><span>Design</span></h1>
+    <p>Fotografi · Grafisk design · Art Direction</p>
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter('alla', this)">Alla</button>
+    <button class="filter-btn" onclick="setFilter('foto', this)">Foto</button>
+    <button class="filter-btn" onclick="setFilter('grafisk', this)">Grafisk design</button>
+  </div>
+</div>
+
+<div class="scatter-field" id="scatter"></div>
+<div class="scatter-label" id="scatter-label"></div>
+
+<div id="lightbox" onclick="closeLightbox(event)">
+  <button id="lightbox-close" onclick="closeLightbox()">✕ stäng</button>
+  <button class="lb-arrow prev" onclick="event.stopPropagation(); shiftLight(-1)">←</button>
+  <img id="lightbox-img" src="" alt="" />
+  <div id="lightbox-caption"></div>
+  <button class="lb-arrow next" onclick="event.stopPropagation(); shiftLight(1)">→</button>
+</div>
+
+<script>
+  const images = [
+    { src: 'images/grafisk_design/1.jpg',  category: 'grafisk', w: 340, h: 425 },
+    { src: 'images/photos/photo1.jpg',     category: 'foto',    w: 500, h: 335 },
+    { src: 'images/grafisk_design/2.jpg',  category: 'grafisk', w: 320, h: 400 },
+    { src: 'images/photos/photo2.jpg',     category: 'foto',    w: 420, h: 282 },
+    { src: 'images/grafisk_design/3.jpg',  category: 'grafisk', w: 360, h: 450 },
+    { src: 'images/photos/photo3.jpg',     category: 'foto',    w: 500, h: 335 },
+    { src: 'images/grafisk_design/4.jpg',  category: 'grafisk', w: 340, h: 425 },
+    { src: 'images/photos/photo4.jpg',     category: 'foto',    w: 460, h: 309 },
+    { src: 'images/grafisk_design/5.jpg',  category: 'grafisk', w: 320, h: 400 },
+    { src: 'images/photos/photo5.jpg',     category: 'foto',    w: 500, h: 335 },
+    { src: 'images/grafisk_design/6.jpg',  category: 'grafisk', w: 360, h: 450 },
+    { src: 'images/photos/photo6.jpg',     category: 'foto',    w: 460, h: 309 },
+    { src: 'images/grafisk_design/1.png',  category: 'grafisk', w: 340, h: 425 },
+    { src: 'images/photos/photo7.jpg',     category: 'foto',    w: 500, h: 335 },
+    { src: 'images/grafisk_design/2.png',  category: 'grafisk', w: 320, h: 400 },
+    { src: 'images/photos/photo8.jpg',     category: 'foto',    w: 309, h: 460 },
+    { src: 'images/grafisk_design/3.png',  category: 'grafisk', w: 360, h: 450 },
+    { src: 'images/photos/photo9.jpg',     category: 'foto',    w: 500, h: 335 },
+    { src: 'images/photos/photo10.jpg',    category: 'foto',    w: 460, h: 309 },
+    { src: 'images/photos/photo11.jpg',    category: 'foto',    w: 500, h: 335 },
+  ];
+
+  const scatter = document.getElementById('scatter');
+  const label   = document.getElementById('scatter-label');
+  let currentFilter = 'alla';
+  let currentLight  = 0;
+  let visibleImages = [];
+
+  function seededRandom(seed) {
+    let s = seed;
+    return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+  }
+
+  function placeImages() {
+    scatter.innerHTML = '';
+    const fieldW = scatter.offsetWidth;
+    const rand   = seededRandom(7);
+
+    visibleImages = images.filter(img =>
+      currentFilter === 'alla' || img.category === currentFilter
+    );
+
+    const n     = visibleImages.length;
+    const cols  = Math.max(2, Math.floor(fieldW / 500));
+    const rows  = Math.ceil(n / cols);
+    const cellW = fieldW / cols;
+    const cellH = 520; // tall cells = good vertical spread
+
+    visibleImages.forEach((img, i) => {
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+
+      // Center of cell + small jitter (±15% of cell) = even spread, slight variation
+      const jitterX = (rand() - 0.5) * cellW * 0.3;
+      const jitterY = (rand() - 0.5) * cellH * 0.3;
+
+      const cx = col * cellW + cellW / 2;
+      const cy = row * cellH + cellH / 2 + 80;
+
+      const x = Math.max(20, Math.min(fieldW - img.w - 20, cx - img.w / 2 + jitterX));
+      const y = Math.max(20, cy - img.h / 2 + jitterY);
+
+      const rot        = (rand() - 0.5) * 10;
+      const floatY     = -(8 + rand() * 12);
+      const floatDur   = 4 + rand() * 4;
+      const floatDelay = -(rand() * 8);
+
+      const card = document.createElement('div');
+      card.className = 'img-card';
+      card.style.cssText = `
+        left: ${x}px; top: ${y}px;
+        width: ${img.w}px; height: ${img.h}px;
+        --rot: ${rot}deg;
+        --float-y: ${floatY}px;
+        --float-dur: ${floatDur}s;
+        --float-delay: ${floatDelay}s;
+        z-index: ${10 + i};
+      `;
+
+      const el = document.createElement('img');
+      el.src = img.src;
+      el.alt = '';
+      el.loading = 'lazy';
+      card.appendChild(el);
+      card.addEventListener('click', () => openLightbox(i));
+      scatter.appendChild(card);
+    });
+
+    let maxBottom = 0;
+    scatter.querySelectorAll('.img-card').forEach(c => {
+      const b = parseInt(c.style.top) + parseInt(c.style.height);
+      if (b > maxBottom) maxBottom = b;
+    });
+    scatter.style.minHeight = (maxBottom + 160) + 'px';
+    label.textContent = visibleImages.length + ' arbeten';
+  }
+
+  function setFilter(filter, btn) {
+    currentFilter = filter;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    placeImages();
+  }
+
+  function openLightbox(index) {
+    currentLight = index;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateLightbox() {
+    const img = visibleImages[currentLight];
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-caption').textContent =
+      img.caption || ((currentLight + 1) + ' / ' + visibleImages.length);
+  }
+
+  function shiftLight(dir) {
+    currentLight = (currentLight + dir + visibleImages.length) % visibleImages.length;
+    updateLightbox();
+  }
+
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox') &&
+        e.target !== document.getElementById('lightbox-close')) return;
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('active')) return;
+    if (e.key === 'ArrowRight') shiftLight(1);
+    if (e.key === 'ArrowLeft')  shiftLight(-1);
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
+  placeImages();
+  window.addEventListener('resize', placeImages);
+</script>
+</body>
+</html>
