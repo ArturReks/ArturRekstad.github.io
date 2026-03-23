@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kreativt — Artur Rekstad</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root { --black: #0a0a0a; --white: #f5f0e8; --red: #e63000; }
@@ -46,6 +45,18 @@
     .lb-arrow.next { right: 1.5rem; }
     .scatter-label { position: fixed; bottom: 1.5rem; left: 2rem; font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: #2a2a2a; pointer-events: none; }
   </style>
+
+  <script>
+    (function(){
+      var c=document.createElement('canvas');c.width=c.height=32;
+      var x=c.getContext('2d');
+      x.fillStyle='#e63000';x.fillRect(0,0,32,32);
+      x.fillStyle='#f5f0e8';x.font='bold 15px serif';x.textAlign='center';x.textBaseline='middle';
+      x.fillText('AR',16,17);
+      var l=document.createElement('link');l.rel='icon';l.href=c.toDataURL();
+      document.head.appendChild(l);
+    })();
+  </script>
 </head>
 <body>
 <nav>

@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PORTFOLIO , ARTUR REKSTAD</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -282,6 +281,18 @@
       padding: .25rem .7rem;
     }
   </style>
+
+  <script>
+    (function(){
+      var c=document.createElement('canvas');c.width=c.height=32;
+      var x=c.getContext('2d');
+      x.fillStyle='#e63000';x.fillRect(0,0,32,32);
+      x.fillStyle='#f5f0e8';x.font='bold 15px serif';x.textAlign='center';x.textBaseline='middle';
+      x.fillText('AR',16,17);
+      var l=document.createElement('link');l.rel='icon';l.href=c.toDataURL();
+      document.head.appendChild(l);
+    })();
+  </script>
 </head>
 <body>
 <div class="page-overlay" id="page-overlay"></div>
@@ -537,7 +548,7 @@
 </section>
 
 <footer>
-  <div>© 2026 Artur Rekstad , Industrial Design Engineering, Chalmers</div>
+  <div>© 2025 Artur Rekstad , Industrial Design Engineering, Chalmers</div>
   <div>Byggd med <span>♥</span> och ren HTML</div>
 </footer>
 
