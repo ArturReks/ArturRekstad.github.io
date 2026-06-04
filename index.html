@@ -342,7 +342,6 @@
       <h2>Hej,<br>jag är<br>Artur.</h2>
       <p>Jag läser Industrial Design Engineering på Chalmers University of Technology , en civilingenjörsutbildning som kombinerar mekanik, materialteknik och tillverkningsprocesser med produktutveckling och formgivning.</p>
       <p>Min styrka ligger i att vara tekniskt grundad och analytisk, samtidigt som jag har ett starkt öga för visuell kommunikation och design. Jag är van att ta ansvar, koordinera projekt och leverera med hög kvalitet.</p>
-      <p>Vid sidan av studierna jobbar jag som Art Director för Chalmers Studentkårs eventavdelning och som privattutor i matematik och tekniska ämnen.</p>
     </div>
     <div class="bio-right">
       <div class="cv-section-title" style="margin-bottom:2rem;">Kompetenser</div>
@@ -458,6 +457,30 @@
       </div>
     </div>
 
+    <!-- CARD 7 - Full width showcase -->
+    <div class="project-wrapper" id="pw-6" style="grid-column: 1 / -1; border-right: none; background: var(--black);">
+      <div class="project-card" onclick="toggleDropdown(6, 'row3')" style="display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap:2rem; padding:2.5rem 3rem;">
+        <div style="display:flex; align-items:center; gap:2rem;">
+          <div class="project-num" style="opacity:1; font-size:5rem; margin:0; color:var(--red);">07</div>
+          <div>
+            <div style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:.5rem;">Kandidatarbete · Chalmers 2026</div>
+            <div class="project-title" style="color:var(--white); font-size:2rem; margin:0;">Generativ Design av Klättergrepp</div>
+          </div>
+        </div>
+        <p class="project-desc" style="color:#999; max-width:40rem;">AI-driven pipeline för generering av klättergrepp med maskininlärning, topologioptimering och additiv tillverkning. PointNet++, FEM-analys och SLS-utskrift.</p>
+        <div style="display:flex; align-items:center; gap:2rem;">
+          <span class="project-arrow" style="opacity:1; color:var(--white);">+</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DROPDOWN ROW 3 -->
+    <div class="dropdown-row" id="row3">
+      <div class="project-dropdown" id="dd-content-row3">
+        <!-- content injected by JS -->
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -480,11 +503,7 @@
       </div>
       <div class="cv-section-title" style="margin-top:2rem;">Kurser</div>
       <div class="cv-item">
-        <div class="cv-item-sub" style="line-height:1.9;">Mechanics · Materials Engineering · Manufacturing Technology · Construction Engineering · Simulation-Based Strength of Materials · Applied Mechatronics · Mathematical Analysis · Linear Algebra · Mathematical Statistics</div>
-      </div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Kommande (vår 2026)</span></div>
-        <div class="cv-item-sub">Tillämpad objektorienterad programmering · Introduktion till AI</div>
+        <div class="cv-item-sub" style="line-height:1.9;">Mechanics · Materials Engineering · Manufacturing Technology · Construction Engineering · Simulation-Based Strength of Materials · Applied Mechatronics · Mathematical Analysis · Linear Algebra · Mathematical Statistics · Tillämpad objektorienterad programmering · Introduktion till AI</div>
       </div>
       <div class="cv-section-title" style="margin-top:2rem;">Utmärkelser</div>
       <div class="cv-item">
@@ -499,12 +518,12 @@
     <div class="cv-col">
       <div class="cv-section-title">Erfarenhet</div>
       <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Art Director</span><span class="cv-item-year">2022—</span></div>
+        <div class="cv-item-header"><span class="cv-item-title">Art Director</span><span class="cv-item-year">2023—2026</span></div>
         <div class="cv-item-sub">Chalmers Student Union Promotion</div>
         <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Ansvarig för visuella koncept, layout och slutproduktion för stora evenemang. Producerar tryckt och digitalt material i Adobe Suite och Figma. Koordinerar projekt för att säkerställa kvalitet och leveranstider.</div>
       </div>
       <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Privattutor</span><span class="cv-item-year">2023—</span></div>
+        <div class="cv-item-header"><span class="cv-item-title">Mattecoach</span><span class="cv-item-year">2023—2024</span></div>
         <div class="cv-item-sub">Studybuddy</div>
         <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Undervisar studenter i matematik och tekniska ämnen. Stark förmåga att förklara komplexa koncept tydligt.</div>
       </div>
@@ -802,11 +821,78 @@
     <div id="poster-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:999; align-items:center; justify-content:center; cursor:zoom-out;">
       <img src="images/poster/poster.png" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
     </div>`,
-    default: `<p style="color:var(--gray); font-size:.85rem;">Projektinfo kommer snart.</p>`
+    default: `<p style="color:var(--gray); font-size:.85rem;">Projektinfo kommer snart.</p>`,
+    6: `<div class="project-dropdown-inner" style="display:grid; grid-template-columns:0.8fr 1fr 1.8fr; gap:0; align-items:stretch;">
+      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
+        <div>
+          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Kandidatarbete 2026</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">AI.<br>Grepp.<br>Klättring.</p>
+        </div>
+        <div style="border-left:3px solid var(--red); padding-left:1.2rem;">
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Kan generativ design och topologioptimering ersätta manuell skulptering av klättergrepp?"</p>
+        </div>
+        <div style="border-left:3px solid #333; padding-left:1.2rem;">
+          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Traditionell grepp­tillverkning kräver handformning, gjutning och iterativ finslipning. Vi undersökte om en AI-driven pipeline kan generera geometriskt varierade och strukturellt valida grepp.</p>
+        </div>
+        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
+          <div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">300+</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">skannade grepp</span>
+          </div>
+          <div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">52.7%</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">igenkänningsgrad</span>
+          </div>
+          <div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">34%</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">material­besparing</span>
+          </div>
+        </div>
+      </div>
+      <div class="drop-col" style="padding:2rem; display:flex; flex-direction:column; gap:1rem; border-left:var(--border);">
+        <div class="drop-text">
+          <div class="drop-label">Uppdrag</div>
+          <p>Undersöka om generativ design, topologioptimering och additiv tillverkning kan integreras i en strukturerad pipeline för klättergrepps­produktion.</p>
+          <div class="drop-label">Metod</div>
+          <p>Två generativa metoder implementerades: retrieval-baserad generering via latent rymdsinterpolation, och Latent Representation Learning med PointNet++-encoder och FoldingNet-decoder. Genererade grepp exporterades till CAD via Blender, optimerades topologiskt i MATLAB och tillverkades med SLS-utskrift.</p>
+          <div class="drop-label">Resultat</div>
+          <p>Pipeline genererar geometriskt koherenta grepp inom rätt kategori med 88-93% rekonstruktionskvalitet. Topologioptimering reducerade materialvolym med 34% med säkerhetsfaktor 1.72. SLS-utskrivna grepp klarade dynamisk last på 105 kg utan deformation.</p>
+          <div class="drop-label">Verktyg</div>
+          <p>Python · PyTorch · PointNet++ · Blender · MATLAB · Artec EVA 3D-scanner · SLS-printer · FEM-analys</p>
+          <div class="drop-label">Team</div>
+          <p>Linus Andersson, Karin Cognell, Artur Rekstad, Klara Strandberg, Thea Söderstjerna, Adrian Warg</p>
+        </div>
+      </div>
+      <div class="drop-col" style="padding:2rem; border-left:var(--border);">
+        <div class="drop-label" style="margin-top:0;">Bilder</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-top:.75rem; align-items:stretch;">
+          <div style="position:relative; background:#111; overflow:hidden; aspect-ratio:1/1.414;">
+            <div id="kand-slider-track" style="display:flex; height:100%; transition:transform .35s cubic-bezier(0.4,0,0.2,1);">
+              <div style="min-width:100%; height:100%; cursor:zoom-in;" onclick="openKandModal(0)">
+                <img src="images/kandidatarbete/bild 1.jpg" style="width:100%; height:100%; object-fit:cover; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
+              </div>
+              <div style="min-width:100%; height:100%; cursor:zoom-in;" onclick="openKandModal(1)">
+                <img src="images/kandidatarbete/bild 2.png" style="width:100%; height:100%; object-fit:cover; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
+              </div>
+              <div style="min-width:100%; height:100%; cursor:zoom-in;" onclick="openKandModal(2)">
+                <img src="images/kandidatarbete/bild 3.jpg" style="width:100%; height:100%; object-fit:cover; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
+              </div>
+            </div>
+            <button onclick="event.stopPropagation(); kandSlide(-1)" style="position:absolute; left:0; top:50%; transform:translateY(-50%); background:var(--black); color:var(--white); border:none; font-family:'Space Mono',monospace; font-size:1rem; padding:.6rem .9rem; cursor:crosshair; z-index:10;">←</button>
+            <button onclick="event.stopPropagation(); kandSlide(1)" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:var(--black); color:var(--white); border:none; font-family:'Space Mono',monospace; font-size:1rem; padding:.6rem .9rem; cursor:crosshair; z-index:10;">→</button>
+            <div id="kand-slider-counter" style="position:absolute; bottom:.6rem; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.7); color:#aaa; font-size:.65rem; letter-spacing:.1em; padding:.25rem .7rem;">1 / 3</div>
+          </div>
+          <div onclick="openKandModal(3)" style="cursor:zoom-in; background:#111; overflow:hidden; aspect-ratio:1/1.414;">
+            <img src="images/kandidatarbete/poster.jpg" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
+          </div>
+        </div>
+        <p style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#444; margin-top:.75rem;">↗ klicka för att förstora</p>
+      </div>
+    </div>`,
   };
 
   // Track which card is open per row
-  const rowState = { row1: null, row2: null };
+  const rowState = { row1: null, row2: null, row3: null };
   const overlay = document.getElementById('page-overlay');
 
   function closeAll() {
@@ -872,6 +958,49 @@
   }, { threshold: 0.3 });
   document.querySelectorAll('.bio-right').forEach(el => skillObs.observe(el));
 
+  let kandSliderIndex = 0;
+  function kandSlide(dir) {
+    const total = 3;
+    kandSliderIndex = (kandSliderIndex + dir + total) % total;
+    document.getElementById('kand-slider-track').style.transform = `translateX(-${kandSliderIndex * 100}%)`;
+    document.getElementById('kand-slider-counter').textContent = (kandSliderIndex + 1) + ' / ' + total;
+  }
+
+  // Kandidatarbete lightbox
+  const kandImages = [
+    { src: 'images/kandidatarbete/bild 1.jpg', cap: 'Bild 1' },
+    { src: 'images/kandidatarbete/bild 2.png', cap: 'Bild 2' },
+    { src: 'images/kandidatarbete/bild 3.jpg', cap: 'Bild 3' },
+    { src: 'images/kandidatarbete/poster.jpg',  cap: 'A1 Poster' },
+  ];
+  let kandIndex = 0;
+
+  function openKandModal(i) {
+    kandIndex = i;
+    updateKandModal();
+    document.getElementById('kand-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function updateKandModal() {
+    document.getElementById('kand-modal-img').src = kandImages[kandIndex].src;
+    document.getElementById('kand-modal-cap').textContent = kandImages[kandIndex].cap + ' · ' + (kandIndex+1) + ' / ' + kandImages.length;
+  }
+  function shiftKand(dir) {
+    kandIndex = (kandIndex + dir + kandImages.length) % kandImages.length;
+    updateKandModal();
+  }
+  function closeKandModal(e) {
+    if (e && e.target !== document.getElementById('kand-modal')) return;
+    document.getElementById('kand-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('kand-modal').style.display !== 'flex') return;
+    if (e.key === 'ArrowRight') shiftKand(1);
+    if (e.key === 'ArrowLeft')  shiftKand(-1);
+    if (e.key === 'Escape') closeKandModal({ target: document.getElementById('kand-modal') });
+  });
+
   function handleSubmit(e) {
     e.preventDefault();
     document.getElementById('form-msg').style.display = 'block';
@@ -898,6 +1027,15 @@
     </div>
   </div>
   <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555;">klicka var som helst för att stänga</p>
+</div>
+
+<!-- Kandidatarbete lightbox -->
+<div id="kand-modal" onclick="closeKandModal(event)" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.97); z-index:9999; align-items:center; justify-content:center; flex-direction:column; gap:1rem; cursor:zoom-out;">
+  <button onclick="closeKandModal()" style="position:fixed; top:1.5rem; right:2rem; background:none; border:none; color:#555; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; cursor:crosshair;">✕ stäng</button>
+  <button onclick="event.stopPropagation(); shiftKand(-1)" style="position:fixed; left:1.5rem; top:50%; transform:translateY(-50%); background:none; border:1px solid #333; color:#555; font-family:'Space Mono',monospace; font-size:1rem; padding:.7rem 1rem; cursor:crosshair;">←</button>
+  <img id="kand-modal-img" src="" style="max-width:85vw; max-height:85vh; object-fit:contain;" />
+  <p id="kand-modal-cap" style="font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:#444;"></p>
+  <button onclick="event.stopPropagation(); shiftKand(1)" style="position:fixed; right:1.5rem; top:50%; transform:translateY(-50%); background:none; border:1px solid #333; color:#555; font-family:'Space Mono',monospace; font-size:1rem; padding:.7rem 1rem; cursor:crosshair;">→</button>
 </div>
 
 </body>
