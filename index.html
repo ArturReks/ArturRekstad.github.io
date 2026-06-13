@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,7 +57,7 @@
     h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(4rem, 10vw, 9rem); line-height: .92; text-transform: uppercase; letter-spacing: -.02em; }
     h1 .outline { -webkit-text-stroke: 2px var(--black); color: transparent; }
     .hero-sub { margin-top: 2rem; max-width: 28rem; color: #444; font-size: .85rem; }
-    .hero-cta { margin-top: 3rem; display: flex; gap: 1rem; }
+    .hero-cta { margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn { font-family: 'Space Mono', monospace; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; padding: .8rem 1.6rem; text-decoration: none; border: var(--border); transition: background .15s, color .15s; cursor: crosshair; }
     .btn-primary { background: var(--black); color: var(--white); }
     .btn-primary:hover { background: var(--red); border-color: var(--red); }
@@ -77,14 +77,14 @@
     .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
     .section-line { height: 1px; background: #ccc; }
 
-    /* OM MIG */
-    #om-mig .content { display: grid; grid-template-columns: 1fr 1fr; }
+    /* ABOUT */
+    #about .content { display: grid; grid-template-columns: 1fr 1fr; }
     .bio-left { padding: 4rem 3rem; border-right: var(--border); }
     .bio-left h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 5vw, 5rem); text-transform: uppercase; line-height: 1; margin-bottom: 2rem; }
     .bio-left p { color: #333; line-height: 1.9; margin-bottom: 1rem; font-size: .85rem; }
     .bio-right { padding: 4rem 3rem; }
     .skill-row { display: flex; justify-content: space-between; align-items: center; padding: .8rem 0; border-bottom: 1px solid #ddd; font-size: .78rem; }
-    .skill-bar { width: 8rem; height: 4px; background: #ddd; position: relative; }
+    .skill-bar { width: 8rem; height: 4px; background: #ddd; position: relative; flex-shrink: 0; }
     .skill-bar::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; background: var(--black); width: var(--w, 0%); transition: width 1s ease; }
 
     /* FULL PAGE OVERLAY when dropdown open */
@@ -100,16 +100,34 @@
     }
     .page-overlay.active { display: block; }
 
-    /* PROJEKT */
-    #projekt .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+    /* =============================================
+       PROJECTS GRID — desktop 3-col, mobile 1-col
+       ============================================= */
+    #projects .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
-    .project-wrapper { border-right: var(--border); border-bottom: var(--border); transition: opacity .2s; position: relative; z-index: 60; display: flex; flex-direction: column; }
+    .project-wrapper {
+      border-right: var(--border);
+      border-bottom: var(--border);
+      transition: opacity .2s;
+      position: relative;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+    }
     .project-wrapper.card-3,
     .project-wrapper.card-6 { border-right: none; }
 
-    .project-card { padding: 2rem; cursor: crosshair; transition: background .15s, color .15s; height: 100%; box-sizing: border-box; }
+    .project-card {
+      padding: 2rem;
+      cursor: crosshair;
+      transition: background .15s, color .15s;
+      height: 100%;
+      box-sizing: border-box;
+    }
 
-    /* Hover and open state */
     .project-card:hover,
     .project-wrapper.open .project-card { background: var(--black); color: var(--white); }
 
@@ -133,7 +151,7 @@
     .project-tag { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; border: 1px solid #ccc; padding: .3rem .7rem; transition: .15s; }
     .project-arrow { font-size: 1.4rem; font-weight: 300; opacity: 0; transition: opacity .15s, transform .2s ease; }
 
-    /* DROPDOWN ROW — spans all 3 columns */
+    /* DROPDOWN ROW — spans all 3 columns on desktop */
     .dropdown-row {
       display: none;
       grid-column: 1 / -1;
@@ -154,7 +172,6 @@
     .drop-label:first-child { margin-top: 0; }
     .project-dropdown .drop-col p { font-size: .82rem; color: #333; line-height: 1.8; }
 
-    /* Right column: space text at top, KPIs pushed to bottom */
     .drop-col-right {
       display: flex;
       flex-direction: column;
@@ -175,16 +192,16 @@
     .cv-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; }
     .cv-item { padding: 1.2rem 0; border-bottom: 1px solid #e0e0e0; }
     .cv-item:last-child { border-bottom: none; }
-    .cv-item-header { display: flex; justify-content: space-between; margin-bottom: .3rem; }
+    .cv-item-header { display: flex; justify-content: space-between; margin-bottom: .3rem; gap: 1rem; }
     .cv-item-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; }
-    .cv-item-year { font-size: .7rem; letter-spacing: .1em; background: var(--black); color: var(--white); padding: .2rem .5rem; align-self: flex-start; }
+    .cv-item-year { font-size: .7rem; letter-spacing: .1em; background: var(--black); color: var(--white); padding: .2rem .5rem; align-self: flex-start; white-space: nowrap; flex-shrink: 0; }
     .cv-item-sub { font-size: .78rem; color: var(--gray); }
 
-    /* KONTAKT */
-    #kontakt { background: var(--black); color: var(--white); }
-    #kontakt .section-header { border-color: #333; }
-    #kontakt .section-title { color: var(--white); }
-    #kontakt .section-line { background: #444; }
+    /* CONTACT */
+    #contact { background: var(--black); color: var(--white); }
+    #contact .section-header { border-color: #333; }
+    #contact .section-title { color: var(--white); }
+    #contact .section-line { background: #444; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #333; }
     .contact-info { padding: 4rem 3rem; border-right: 1px solid #333; }
     .contact-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 2rem; }
@@ -202,22 +219,9 @@
     .btn-send { background: var(--red); color: var(--white); border: 2px solid var(--red); font-family: 'Space Mono', monospace; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; padding: .9rem 2rem; cursor: crosshair; transition: background .15s; margin-top: 1rem; }
     .btn-send:hover { background: transparent; }
 
-    footer { background: var(--black); color: #555; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; border-top: 1px solid #222; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+    footer { background: var(--black); color: #555; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; border-top: 1px solid #222; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; flex-wrap: wrap; gap: .5rem; }
     footer span { color: var(--red); }
 
-    @media (max-width: 900px) {
-      #hero, #om-mig .content, #cv .content, .contact-grid { grid-template-columns: 1fr; }
-      .hero-right { min-height: 40vh; }
-      #projekt .grid { grid-template-columns: 1fr; }
-      .project-wrapper { border-right: none !important; }
-      .dropdown-row { grid-column: 1 / -1; }
-      .project-dropdown-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-      .cv-col:first-child { border-right: none; border-bottom: var(--border); }
-      nav ul { display: none; }
-    }
-
-    
-    
     /* SLIDER */
     .slider {
       position: relative;
@@ -280,6 +284,94 @@
       letter-spacing: .1em;
       padding: .25rem .7rem;
     }
+
+    /* =============================================
+       MOBILE RESPONSIVE
+       ============================================= */
+    @media (max-width: 900px) {
+      /* Nav */
+      nav { padding: 0 1rem; }
+      nav ul { display: none; }
+
+      /* Hero */
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: var(--border); justify-content: flex-start; }
+      .hero-right { min-height: 40vh; }
+      .hero-right-inner { padding: 2.5rem 1.5rem; }
+
+      /* Sections */
+      .section-header { padding: 1.2rem 1.5rem; }
+
+      /* About */
+      #about .content { grid-template-columns: 1fr; }
+      .bio-left { padding: 2.5rem 1.5rem; border-right: none; border-bottom: var(--border); }
+      .bio-right { padding: 2.5rem 1.5rem; }
+      .skill-row { font-size: .72rem; }
+
+      /* CV */
+      #cv .content { grid-template-columns: 1fr; }
+      .cv-col { padding: 2rem 1.5rem; }
+      .cv-col:first-child { border-right: none; border-bottom: var(--border); }
+
+      /* Contact */
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-info { padding: 2.5rem 1.5rem; border-right: none; border-bottom: 1px solid #222; }
+      .contact-form { padding: 2.5rem 1.5rem; }
+
+      footer { padding: 1.2rem 1.5rem; }
+
+      /* ---- PROJECT GRID MOBILE ----
+         Each card becomes full-width. The dropdown-row elements are
+         visually hidden from the grid flow and instead each card has
+         an inline dropdown rendered immediately after it via JS.
+         We hide the old .dropdown-row elements entirely on mobile
+         and show .mobile-dropdown divs instead.
+      */
+      #projects .grid {
+        grid-template-columns: 1fr;
+      }
+      .project-wrapper {
+        border-right: none !important;
+      }
+
+      /* Hide desktop dropdown rows on mobile */
+      .dropdown-row {
+        display: none !important;
+      }
+
+      /* Mobile shared panel: moved by JS to sit after the clicked card.
+         It lives inside the 1-col grid so no extra columns are needed. */
+      #mob-panel {
+        display: none;
+        grid-column: 1 / -1;
+        border-bottom: var(--border);
+        background: var(--white);
+        animation: slideDown .2s ease;
+        position: relative;
+        z-index: 60;
+      }
+
+      .project-dropdown { padding: 1.5rem; }
+      .project-dropdown-inner {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
+
+      /* Full-width showcase card on mobile */
+      #pw-6 { background: var(--black); }
+      #pw-6 .project-card {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        padding: 1.5rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: clamp(3rem, 14vw, 5rem); }
+      .hero-sub { font-size: .8rem; }
+      .project-dropdown { padding: 1.2rem 1rem; }
+    }
   </style>
 
   <script>
@@ -293,7 +385,6 @@
       document.head.appendChild(l);
     })();
   </script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
 <div class="page-overlay" id="page-overlay"></div>
@@ -301,29 +392,29 @@
 <nav>
   <a href="#hero" class="nav-logo">ARTUR&nbsp;<span>REKSTAD</span></a>
   <ul>
-    <li><a href="#om-mig">Om mig</a></li>
-    <li><a href="#projekt">Projekt</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#cv">CV</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-    <li><a href="grafisk.html">Foto & Design</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="grafisk.html">Photo & Design</a></li>
   </ul>
 </nav>
 
 <section id="hero">
   <div class="hero-left">
-    <div class="hero-label">Teknisk Design , Chalmers University of Technology</div>
-    <h1>Design<br><span class="outline">möter</span><br>Teknik.</h1>
-    <p class="hero-sub">Industrial Design Engineering student at Chalmers. B.Sc. ongoing towards M.Sc. , combining mechanical engineering with product development and visual design. Structured, technically grounded and comfortable taking responsibility.</p>
+    <div class="hero-label">Industrial Design Engineering , Chalmers University of Technology</div>
+    <h1>Design<br><span class="outline">meets</span><br>Engineering.</h1>
+    <p class="hero-sub">Industrial Design Engineering student at Chalmers. B.Sc. ongoing towards M.Sc., combining mechanical engineering with product development and visual design. Structured, technically grounded and comfortable taking responsibility.</p>
     <div class="hero-cta">
-      <a href="#projekt" class="btn btn-primary">Se mina projekt</a>
-      <a href="#kontakt" class="btn btn-outline">Kontakta mig</a>
+      <a href="#projects" class="btn btn-primary">View my projects</a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-right-inner">
       <div class="hero-stats">
         <div class="stat-item"><div class="stat-num">B.Sc.</div><div class="stat-label">Industrial Design Eng.</div></div>
-        <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">År på Chalmers</div></div>
+        <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years at Chalmers</div></div>
         <div class="stat-item"><div class="stat-num">CAD</div><div class="stat-label">CATIA · Alias · Inventor</div></div>
       </div>
     </div>
@@ -331,35 +422,35 @@
   </div>
 </section>
 
-<section id="om-mig">
+<section id="about">
   <div class="section-header">
     <span class="section-num">01 /</span>
-    <span class="section-title">Om mig</span>
+    <span class="section-title">About me</span>
     <div class="section-line"></div>
   </div>
   <div class="content">
     <div class="bio-left">
-      <h2>Hej,<br>jag är<br>Artur.</h2>
-      <p>Jag läser Industrial Design Engineering på Chalmers University of Technology , en civilingenjörsutbildning som kombinerar mekanik, materialteknik och tillverkningsprocesser med produktutveckling och formgivning.</p>
-      <p>Min styrka ligger i att vara tekniskt grundad och analytisk, samtidigt som jag har ett starkt öga för visuell kommunikation och design. Jag är van att ta ansvar, koordinera projekt och leverera med hög kvalitet.</p>
+      <h2>Hi,<br>I'm<br>Artur.</h2>
+      <p>I study Industrial Design Engineering at Chalmers University of Technology — a master's programme combining mechanics, materials engineering and manufacturing processes with product development and design.</p>
+      <p>My strength lies in being technically grounded and analytical while having a strong eye for visual communication and design. I'm used to taking responsibility, coordinating projects and delivering high-quality work.</p>
     </div>
     <div class="bio-right">
-      <div class="cv-section-title" style="margin-bottom:2rem;">Kompetenser</div>
+      <div class="cv-section-title" style="margin-bottom:2rem;">Skills</div>
       <div class="skill-row"><span>CATIA · Alias · Inventor</span><div class="skill-bar" style="--w:85%"></div></div>
       <div class="skill-row"><span>Figma / Interface Design</span><div class="skill-bar" style="--w:90%"></div></div>
       <div class="skill-row"><span>Adobe Creative Suite</span><div class="skill-bar" style="--w:90%"></div></div>
-      <div class="skill-row"><span>Produktutveckling &amp; Prototyping</span><div class="skill-bar" style="--w:80%"></div></div>
-      <div class="skill-row"><span>Programmering (Python · OOP)</span><div class="skill-bar" style="--w:65%"></div></div>
+      <div class="skill-row"><span>Product Development &amp; Prototyping</span><div class="skill-bar" style="--w:80%"></div></div>
+      <div class="skill-row"><span>Programming (Python · OOP)</span><div class="skill-bar" style="--w:65%"></div></div>
       <div class="skill-row"><span>FEA / Simulation</span><div class="skill-bar" style="--w:65%"></div></div>
       <div class="skill-row"><span>VRED</span><div class="skill-bar" style="--w:60%"></div></div>
     </div>
   </div>
 </section>
 
-<section id="projekt">
+<section id="projects">
   <div class="section-header">
     <span class="section-num">02 /</span>
-    <span class="section-title">Projekt</span>
+    <span class="section-title">Projects</span>
     <div class="section-line"></div>
   </div>
 
@@ -370,7 +461,7 @@
       <div class="project-card" onclick="toggleDropdown(0, 'row1')">
         <div class="project-num">01</div>
         <div class="project-title">Mecenat , Usability Redesign</div>
-        <p class="project-desc">Usability-analys och redesign av Mecenats studentapp , från rörig och reklamig till intuitiv och effektiv.</p>
+        <p class="project-desc">Usability analysis and redesign of the Mecenat student app — from cluttered and ad-heavy to intuitive and efficient.</p>
         <div class="project-footer">
           <span class="project-tag">UX / Usability</span>
           <span class="project-arrow">+</span>
@@ -382,10 +473,10 @@
     <div class="project-wrapper" id="pw-1">
       <div class="project-card" onclick="toggleDropdown(1, 'row1')">
         <div class="project-num">02</div>
-        <div class="project-title">Hållbar Vattenkokare</div>
-        <p class="project-desc">Cirkulär redesign av en lågbudgetvattenkokare , från 3 års plast till 30 års brons.</p>
+        <div class="project-title">Sustainable Kettle</div>
+        <p class="project-desc">Circular redesign of a budget kettle — from 3 years of plastic to 30 years of bronze.</p>
         <div class="project-footer">
-          <span class="project-tag">Hållbar Design</span>
+          <span class="project-tag">Sustainable Design</span>
           <span class="project-arrow">+</span>
         </div>
       </div>
@@ -395,30 +486,28 @@
     <div class="project-wrapper card-3" id="pw-2">
       <div class="project-card" onclick="toggleDropdown(2, 'row1')">
         <div class="project-num">03</div>
-        <div class="project-title">Innovativ Mattransport</div>
-        <p class="project-desc">Ergonomisk matkasse med triangelform och flera bärsätt , designad för unga vuxna utan bil.</p>
+        <div class="project-title">Innovative Grocery Carrier</div>
+        <p class="project-desc">Ergonomic shopping bag with triangular form and multiple carry modes — designed for young adults without a car.</p>
         <div class="project-footer">
-          <span class="project-tag">Produktdesign</span>
+          <span class="project-tag">Product Design</span>
           <span class="project-arrow">+</span>
         </div>
       </div>
     </div>
 
-    <!-- DROPDOWN ROW 1 -->
+    <!-- DROPDOWN ROW 1 (desktop only) -->
     <div class="dropdown-row" id="row1">
-      <div class="project-dropdown" id="dd-content-row1">
-        <!-- content injected by JS -->
-      </div>
+      <div class="project-dropdown" id="dd-content-row1"></div>
     </div>
 
     <!-- CARD 4 -->
     <div class="project-wrapper" id="pw-3">
       <div class="project-card" onclick="toggleDropdown(3, 'row2')">
         <div class="project-num">04</div>
-        <div class="project-title">Ergonomi , TV-Fjärrkontroll</div>
-        <p class="project-desc">Ergonomisk analys och omdesign av TV-fjärrkontrollen , kognitiv belastning, fysisk påverkan och ljusmiljö.</p>
+        <div class="project-title">Ergonomics , TV Remote</div>
+        <p class="project-desc">Ergonomic analysis and redesign of the TV remote — cognitive load, physical impact and lighting environment.</p>
         <div class="project-footer">
-          <span class="project-tag">Ergonomi</span>
+          <span class="project-tag">Ergonomics</span>
           <span class="project-arrow">+</span>
         </div>
       </div>
@@ -428,10 +517,10 @@
     <div class="project-wrapper" id="pw-4">
       <div class="project-card" onclick="toggleDropdown(4, 'row2')">
         <div class="project-num">05</div>
-        <div class="project-title">Produktsemiotik , Högtalare</div>
-        <p class="project-desc">Personaanpassad högtalardesign utifrån ett produktsemiotiskt förhållningssätt , uttryck, budskap och form i Alias och VRED.</p>
+        <div class="project-title">Product Semiotics , Speaker</div>
+        <p class="project-desc">Persona-driven speaker design using a product semiotic approach — expression, message and form in Alias and VRED.</p>
         <div class="project-footer">
-          <span class="project-tag">CAD / Semiotik</span>
+          <span class="project-tag">CAD / Semiotics</span>
           <span class="project-arrow">+</span>
         </div>
       </div>
@@ -441,20 +530,18 @@
     <div class="project-wrapper card-6" id="pw-5">
       <div class="project-card" onclick="toggleDropdown(5, 'row2')">
         <div class="project-num">06</div>
-        <div class="project-title">Design & Användaranpassning</div>
-        <p class="project-desc">Kajförvaring för båtägare , iterativ designprocess från kravbild till fysisk prototyp och A1-poster.</p>
+        <div class="project-title">Design & User Adaptation</div>
+        <p class="project-desc">Quayside storage for boat owners — iterative design process from requirements to physical prototype and A1 poster.</p>
         <div class="project-footer">
-          <span class="project-tag">Designprocess</span>
+          <span class="project-tag">Design Process</span>
           <span class="project-arrow">+</span>
         </div>
       </div>
     </div>
 
-    <!-- DROPDOWN ROW 2 -->
+    <!-- DROPDOWN ROW 2 (desktop only) -->
     <div class="dropdown-row" id="row2">
-      <div class="project-dropdown" id="dd-content-row2">
-        <!-- content injected by JS -->
-      </div>
+      <div class="project-dropdown" id="dd-content-row2"></div>
     </div>
 
     <!-- CARD 7 - Full width showcase -->
@@ -463,22 +550,20 @@
         <div style="display:flex; align-items:center; gap:2rem;">
           <div class="project-num" style="opacity:1; font-size:5rem; margin:0; color:var(--red);">07</div>
           <div>
-            <div style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:.5rem;">Kandidatarbete · Chalmers 2026</div>
-            <div class="project-title" style="color:var(--white); font-size:2rem; margin:0;">Generativ Design av Klättergrepp</div>
+            <div style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:.5rem;">Bachelor Thesis · Chalmers 2026</div>
+            <div class="project-title" style="color:var(--white); font-size:2rem; margin:0;">Generative Design of Climbing Holds</div>
           </div>
         </div>
-        <p class="project-desc" style="color:#999; max-width:40rem;">AI-driven pipeline för generering av klättergrepp med maskininlärning, topologioptimering och additiv tillverkning. PointNet++, FEM-analys och SLS-utskrift.</p>
+        <p class="project-desc" style="color:#999; max-width:40rem;">AI-driven pipeline for generating climbing holds using machine learning, topology optimisation and additive manufacturing. PointNet++, FEM analysis and SLS printing.</p>
         <div style="display:flex; align-items:center; gap:2rem;">
           <span class="project-arrow" style="opacity:1; color:var(--white);">+</span>
         </div>
       </div>
     </div>
 
-    <!-- DROPDOWN ROW 3 -->
+    <!-- DROPDOWN ROW 3 (desktop only) -->
     <div class="dropdown-row" id="row3">
-      <div class="project-dropdown" id="dd-content-row3">
-        <!-- content injected by JS -->
-      </div>
+      <div class="project-dropdown" id="dd-content-row3"></div>
     </div>
 
   </div>
@@ -487,27 +572,27 @@
 <section id="cv">
   <div class="section-header">
     <span class="section-num">03 /</span>
-    <span class="section-title">CV &amp; Erfarenhet</span>
+    <span class="section-title">CV &amp; Experience</span>
     <div class="section-line"></div>
   </div>
   <div class="content">
     <div class="cv-col">
-      <div class="cv-section-title">Utbildning</div>
+      <div class="cv-section-title">Education</div>
       <div class="cv-item">
         <div class="cv-item-header"><span class="cv-item-title">M.Sc. Industrial Design Engineering</span><span class="cv-item-year">2026—28</span></div>
-        <div class="cv-item-sub">Chalmers University of Technology · Pågående</div>
+        <div class="cv-item-sub">Chalmers University of Technology · In progress</div>
       </div>
       <div class="cv-item">
         <div class="cv-item-header"><span class="cv-item-title">B.Sc. Industrial Design Engineering</span><span class="cv-item-year">2023—26</span></div>
         <div class="cv-item-sub">Chalmers University of Technology</div>
       </div>
-      <div class="cv-section-title" style="margin-top:2rem;">Kurser</div>
+      <div class="cv-section-title" style="margin-top:2rem;">Courses</div>
       <div class="cv-item">
-        <div class="cv-item-sub" style="line-height:1.9;">Mechanics · Materials Engineering · Manufacturing Technology · Construction Engineering · Simulation-Based Strength of Materials · Applied Mechatronics · Mathematical Analysis · Linear Algebra · Mathematical Statistics · Tillämpad objektorienterad programmering · Introduktion till AI</div>
+        <div class="cv-item-sub" style="line-height:1.9;">Mechanics · Materials Engineering · Manufacturing Technology · Construction Engineering · Simulation-Based Strength of Materials · Applied Mechatronics · Mathematical Analysis · Linear Algebra · Mathematical Statistics · Applied Object-Oriented Programming · Introduction to AI</div>
       </div>
-      <div class="cv-section-title" style="margin-top:2rem;">Utmärkelser</div>
+      <div class="cv-section-title" style="margin-top:2rem;">Awards</div>
       <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Stipendium</span></div>
+        <div class="cv-item-header"><span class="cv-item-title">Scholarship</span></div>
         <div class="cv-item-sub">Scholarship for high academic achievement</div>
       </div>
       <div class="cv-item">
@@ -516,176 +601,210 @@
       </div>
     </div>
     <div class="cv-col">
-      <div class="cv-section-title">Erfarenhet</div>
+      <div class="cv-section-title">Experience</div>
       <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Art Director</span><span class="cv-item-year">2024—2026</span></div>
+        <div class="cv-item-header"><span class="cv-item-title">Art Director</span><span class="cv-item-year">2023—2026</span></div>
         <div class="cv-item-sub">Chalmers Student Union Promotion</div>
-        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Ansvarig för visuella koncept, layout och slutproduktion för stora evenemang. Producerar tryckt och digitalt material i Adobe Suite och Figma. Koordinerar projekt för att säkerställa kvalitet och leveranstider.</div>
+        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Responsible for visual concepts, layout and final production for large-scale events. Produces print and digital material in Adobe Suite and Figma. Coordinates projects to ensure quality and delivery deadlines.</div>
       </div>
       <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Mattecoach</span><span class="cv-item-year">2023—2024</span></div>
+        <div class="cv-item-header"><span class="cv-item-title">Maths Tutor</span><span class="cv-item-year">2023—2024</span></div>
         <div class="cv-item-sub">Studybuddy</div>
-        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Undervisar studenter i matematik och tekniska ämnen. Stark förmåga att förklara komplexa koncept tydligt.</div>
+        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Tutors students in mathematics and technical subjects. Strong ability to explain complex concepts clearly.</div>
       </div>
       <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Enhetsansvarig (sommar)</span><span class="cv-item-year">2022—24</span></div>
+        <div class="cv-item-header"><span class="cv-item-title">Unit Manager (summer)</span><span class="cv-item-year">2022—24</span></div>
         <div class="cv-item-sub">Kolmårdens Djurpark</div>
-        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Ledde team om 10–25 anställda. Ansvarig för bemanning, flödesoptimering och problemlösning i högt tempo.</div>
+        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Led teams of 10–25 staff. Responsible for scheduling, flow optimisation and problem-solving in a fast-paced environment.</div>
       </div>
       <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Kassör (sommar)</span><span class="cv-item-year">2025</span></div>
+        <div class="cv-item-header"><span class="cv-item-title">Cashier (summer)</span><span class="cv-item-year">2025</span></div>
         <div class="cv-item-sub">Willys</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="kontakt">
+<section id="contact">
   <div class="section-header">
     <span class="section-num">04 /</span>
-    <span class="section-title">Kontakt</span>
+    <span class="section-title">Contact</span>
     <div class="section-line" style="background:#333;"></div>
   </div>
   <div class="contact-grid">
     <div class="contact-info">
-      <h3>Låt oss<br>prata<br><span>design.</span></h3>
-      <p style="color:#888; font-size:.8rem; max-width:22rem;">Öppen för praktikplatser, samarbeten och intressanta samtal om design och teknologi.</p>
+      <h3>Let's<br>talk<br><span>design.</span></h3>
+      <p style="color:#888; font-size:.8rem; max-width:22rem;">Open to internships, collaborations and interesting conversations about design and technology.</p>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#691b0c021a1d080d081b1d1c1b290e04080005470a0604" class="contact-link"><span class="__cf_email__" data-cfemail="7103141a02051015100305040331161c10181d5f121e1c">[email&#160;protected]</span></a>
+        <a href="mailto:rekstadartur@gmail.com" class="contact-link">rekstadartur@gmail.com</a>
         <a href="https://linkedin.com/in/artur-rekstad" class="contact-link" target="_blank">linkedin.com/in/artur-rekstad</a>
         <a href="tel:0763038767" class="contact-link">076-303 87 67</a>
       </div>
     </div>
     <div class="contact-form">
-      <form onsubmit="(function(e){e.preventDefault();var namn=e.target.querySelector('input[type=text]').value;var email=e.target.querySelector('input[type=email]').value;var msg=e.target.querySelector('textarea').value;var subject=encodeURIComponent('Portfoliokontakt från '+namn);var body=encodeURIComponent('Namn: '+namn+'\nE-post: '+email+'\n\n'+msg);var u='rekstadartur';var d='gmail.com';window.location.href='mai'+'lto:'+u+'@'+d+'?subject='+subject+'&body='+body;})(event)">
-        <div class="form-group"><label>Ditt namn</label><input type="text" placeholder="Anna Andersson" required /></div>
-        <div class="form-group"><label>E-postadress</label><input type="email" placeholder="anna@example.com" required /></div>
-        <div class="form-group"><label>Meddelande</label><textarea placeholder="Berätta om ditt projekt eller varför du vill ta kontakt..." required></textarea></div>
-        <button type="submit" class="btn-send">Skicka meddelande →</button>
+      <div id="form-success" style="display:none; border-left:3px solid var(--red); padding:1rem 1.2rem; margin-bottom:1.5rem;">
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; color:var(--white);">Message sent.</p>
+        <p style="font-size:.75rem; color:#888; margin-top:.3rem;">I'll get back to you as soon as I can.</p>
+      </div>
+      <div id="form-error" style="display:none; border-left:3px solid #c00; padding:1rem 1.2rem; margin-bottom:1.5rem;">
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; color:var(--white);">Something went wrong.</p>
+        <p style="font-size:.75rem; color:#888; margin-top:.3rem;">Please try again or email me directly.</p>
+      </div>
+      <form id="contact-form">
+        <input type="hidden" name="access_key" value="83e3fefe-26c9-442b-8b16-9dabbe0a75ec" />
+        <input type="hidden" name="subject" value="Portfolio contact" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="form-group"><label>Your name</label><input type="text" name="name" placeholder="Anna Andersson" required /></div>
+        <div class="form-group"><label>Email address</label><input type="email" name="email" placeholder="anna@example.com" required /></div>
+        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project or why you'd like to connect..." required></textarea></div>
+        <button type="submit" class="btn-send" id="submit-btn">Send message →</button>
       </form>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const btn = document.getElementById('submit-btn');
+          btn.textContent = 'Sending...';
+          btn.disabled = true;
+
+          const data = Object.fromEntries(new FormData(this));
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data)
+          }).catch(() => null);
+
+          const ok = res && res.ok && (await res.json()).success;
+          document.getElementById('form-success').style.display = ok ? 'block' : 'none';
+          document.getElementById('form-error').style.display = ok ? 'none' : 'block';
+          if (ok) this.style.display = 'none';
+          else { btn.textContent = 'Send message →'; btn.disabled = false; }
+        });
+      </script>
     </div>
   </div>
 </section>
 
 <footer>
   <div>© 2025 Artur Rekstad , Industrial Design Engineering, Chalmers</div>
-  <div>Byggd med <span>♥</span> och ren HTML</div>
+  <div>Built with <span>♥</span> and plain HTML</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Project content definitions
+<script>
+  // ─── Project content (English) ───────────────────────────────────────────────
   const projectContent = {
     0: `<div class="project-dropdown-inner" style="align-items:stretch;">
       <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
         <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Användartestning</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Rörig.<br>Reklamig.<br>Oanvänd.</p>
+          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">User Testing</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Cluttered.<br>Ad-heavy.<br>Unused.</p>
         </div>
         <div style="border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Vadå spel? What are you talking about?"</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.6rem;">, Testperson FFP1</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Games? What are you talking about?"</p>
+          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.6rem;">, Test participant FFP1</p>
         </div>
         <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; color:#aaa; line-height:1.3; text-transform:uppercase; margin:0;">"Den är reklamaktig, inte så rolig att använda."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555; margin-top:.6rem;">, Testperson FFP6</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; color:#aaa; line-height:1.3; text-transform:uppercase; margin:0;">"It feels like an ad platform, not fun to use."</p>
+          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555; margin-top:.6rem;">, Test participant FFP6</p>
         </div>
         <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">34%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">snabbare uppgifter</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">faster tasks</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">66%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">föredrog redesignen</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">preferred redesign</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">6</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">testpersoner</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">test participants</span>
           </div>
         </div>
       </div>
       <div class="drop-col drop-col-right" style="display:flex; flex-direction:column; gap:0;">
         <div class="drop-text" style="flex:1;">
-          <div class="drop-label">Uppdrag</div>
-          <p>Undersöka och förbättra usabilityn i Mecenats studentapp , ett verktyg för studentrabatter, studentleg och studentlivsinnehåll.</p>
+          <div class="drop-label">Brief</div>
+          <p>Investigate and improve the usability of the Mecenat student app — a tool for student discounts, student ID and student lifestyle content.</p>
           <div class="drop-label">Problem</div>
-          <p>Användartester visade att appen upplevdes som rörig och reklamig. Majoriteten av funktionerna var okända , studentleg och rabatter kände alla till, men spel (0%) och tips (6%) hittades knappt.</p>
-          <div class="drop-label">Lösning</div>
-          <p>Redesign av startsida, kampanjsida och menystruktur med fokus på tydligare informationshierarki, reducerad kognitiv belastning och ökad guessability.</p>
-          <div class="drop-label">Verktyg</div>
-          <p>Figma · Användarintervjuer · Formativ &amp; summativ utvärdering · A/B-test</p>
+          <p>User testing showed the app felt cluttered and advertisement-heavy. Most features were unknown — student ID and discounts were recognised by all, but games (0%) and tips (6%) were barely discovered.</p>
+          <div class="drop-label">Solution</div>
+          <p>Redesign of the home screen, campaign page and menu structure focusing on clearer information hierarchy, reduced cognitive load and improved guessability.</p>
+          <div class="drop-label">Tools</div>
+          <p>Figma · User interviews · Formative &amp; summative evaluation · A/B testing</p>
           <div class="drop-label">Team</div>
           <p>Sonja Bergman, Silja Kuang, Karin Lindgren, Artur Rekstad, Amelie Russberg</p>
         </div>
         <div style="margin-top:1.5rem;">
           <button onclick="document.getElementById('mecenat-modal').style.display='flex'" style="background:var(--black); border:none; font-family:'Space Mono',monospace; font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; cursor:crosshair; padding:.75rem 1.2rem; color:var(--white); display:inline-flex; align-items:center; gap:.6rem;">
-            ↗ Visa presentationsbilder
+            ↗ View presentation slides
           </button>
         </div>
       </div>
     </div>`,
+
     1: `<div class="project-dropdown-inner" style="align-items:stretch;">
       <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
         <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Hållbar redesign</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">3 år plast.<br>30 år<br>brons.</p>
+          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Sustainable Redesign</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">3 years<br>plastic.<br>30 years<br>bronze.</p>
         </div>
         <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Referensprodukten gulnar, går sönder och slängs. Den nya kokar i 30 år, och när du är klar lämnar du in den mot rabatt.</p>
+          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">The reference product yellows, breaks and gets thrown away. The new one boils for 30 years — and when you're done, you return it for a discount.</p>
         </div>
         <div style="border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Brons ärgas med tid och får en patina, produkten blir mer unik ju längre den används."</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Bronze develops a patina over time — the product becomes more unique the longer it's used."</p>
         </div>
         <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">30%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">minskat CO₂/år</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lower CO₂/year</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">82%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lägre eco cost/år</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lower eco cost/year</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">10×</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">längre livslängd</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">longer lifespan</span>
           </div>
         </div>
       </div>
       <div class="drop-col drop-col-right" style="display:flex; flex-direction:column; justify-content:space-between; gap:1.5rem;">
         <div class="drop-text">
-          <div class="drop-label">Uppdrag</div>
-          <p>Undersöka och redesigna en lågbudgetvattenkokare ur ett hållbart och cirkulärt perspektiv , från linjär konsumtionsprodukt till långlivad kvalitetsprodukt.</p>
+          <div class="drop-label">Brief</div>
+          <p>Investigate and redesign a budget kettle from a sustainable, circular perspective — from linear consumer product to long-lived quality product.</p>
           <div class="drop-label">Problem</div>
-          <p>Referensprodukten (Clas Ohlsson, 149 kr) beräknades ha en livslängd på 3 år. Plasthölje som gulnar, svår att reparera och tillverkad i Kina.</p>
-          <div class="drop-label">Lösning</div>
-          <p>Brons med innervägg i rostfritt stål, induktionsplatta och handtag i svensk björk. Producerad i Tyskland. Pantsystem för cirkulär livscykel.</p>
-          <div class="drop-label">Verktyg</div>
-          <p>Granta EduPack · EcoAudit · EcoCost · LCA · TNS 4 systemvillkor</p>
+          <p>The reference product (Clas Ohlsson, 149 SEK) was estimated to have a 3-year lifespan. Plastic casing that yellows, difficult to repair and manufactured in China.</p>
+          <div class="drop-label">Solution</div>
+          <p>Bronze body with stainless steel inner wall, induction base and handle in Swedish birch. Manufactured in Germany. Return-deposit system for circular lifecycle.</p>
+          <div class="drop-label">Tools</div>
+          <p>Granta EduPack · EcoAudit · EcoCost · LCA · TNS 4 system conditions</p>
         </div>
-        <img src="images/kettle/kettle.png" alt="Hållbar vattenkokare" style="width:100%; display:block; border: 2px solid #0a0a0a; background:#0a0a0a;" />
+        <img src="images/kettle/kettle.png" alt="Sustainable kettle" style="width:100%; display:block; border: 2px solid #0a0a0a; background:#0a0a0a;" />
       </div>
     </div>`,
+
     2: `<div class="project-dropdown-inner" style="align-items:stretch;">
       <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
         <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Målgrupp</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Pank.<br>Ingen bil.<br>Alltid bråttom.</p>
+          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Target User</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Broke.<br>No car.<br>Always<br>rushing.</p>
         </div>
         <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Bor i lägenhet. Handlar spontant efter jobbet. Tar kollektivtrafiken. Har varken plats eller tid för en klumpig kasse.</p>
+          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Lives in a flat. Shops spontaneously after work. Takes public transport. Has neither space nor time for a bulky bag.</p>
         </div>
         <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">20–35</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">målgrupp ålder</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">target age</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">4</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">bärsätt</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">carry modes</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">18</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">koncept utvärderade</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">concepts evaluated</span>
           </div>
         </div>
       </div>
@@ -707,164 +826,164 @@
       </div>
       <div class="drop-col drop-col-right">
         <div class="drop-text">
-          <div class="drop-label">Uppdrag</div>
-          <p>Utveckla en innovativ produkt för transport av livsmedel från mataffären till hemmet , utan bil , för unga vuxna i början av arbetslivet.</p>
+          <div class="drop-label">Brief</div>
+          <p>Develop an innovative product for transporting groceries from the store to home — without a car — for young adults early in their working lives.</p>
           <div class="drop-label">Problem</div>
-          <p>Målgruppen förlitar sig på kollektivtrafik, cykel och gång. Befintliga kassar saknar ergonomi, anpassningsbarhet och estetik som passar en aktiv urban vardag.</p>
-          <div class="drop-label">Lösning</div>
-          <p>Triangeln , en volymanpassningsbar väska med triangulär form och fyra bärsätt: kasse, ryggsäck, axelväska och duffel bag. Isolerat ytterfack för frysvaror, justerbara remmar och ihopfällbar botten för kompakt förvaring.</p>
-          <div class="drop-label">Metod</div>
-          <p>Braindrawing · Brainstorming · Morfologisk matris · Elimineringsmatris · Pughmatris · Användarintervjuer · Fysisk prototyp</p>
+          <p>The target group relies on public transport, cycling and walking. Existing bags lack the ergonomics, adaptability and aesthetic that suits an active urban lifestyle.</p>
+          <div class="drop-label">Solution</div>
+          <p>The Triangle — a volume-adjustable bag with a triangular form and four carry modes: tote, backpack, shoulder bag and duffel. Insulated outer pocket for frozen goods, adjustable straps and collapsible base for compact storage.</p>
+          <div class="drop-label">Method</div>
+          <p>Braindrawing · Brainstorming · Morphological matrix · Elimination matrix · Pugh matrix · User interviews · Physical prototype</p>
           <div class="drop-label">Team</div>
           <p>Amanda Gavelin, Artur Rekstad, Sonja Bergman, Linnea Landin, Dan Wester</p>
         </div>
       </div>
     </div>`,
+
+    3: `<div class="project-dropdown-inner" style="align-items:stretch;">
+      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
+        <div style="border-left: 3px solid var(--red); padding-left:1.2rem;">
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"I don't understand the difference between the back, home and overview buttons."</p>
+          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.8rem;">, Interviewed user</p>
+        </div>
+        <div style="border-left: 3px solid #333; padding-left:1.2rem;">
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; color:#aaa; line-height:1.3; text-transform:uppercase; margin:0;">"There are too many buttons."</p>
+          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555; margin-top:.8rem;">, Interviewed user</p>
+        </div>
+        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
+          <div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">63.7</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lux — evening reading</span>
+          </div>
+          <div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">482</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lux — midday</span>
+          </div>
+          <div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">4</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">users interviewed</span>
+          </div>
+        </div>
+      </div>
+      <div class="drop-col drop-col-right">
+        <div class="drop-text">
+          <div class="drop-label">Brief</div>
+          <p>Identify and analyse the central ergonomic aspects of the TV remote and develop design proposals for improved interaction.</p>
+          <div class="drop-label">Problem</div>
+          <p>Users didn't understand unfamiliar buttons, experienced the interface as overly complex, and struggled to see buttons in dark environments — the most common usage context.</p>
+          <div class="drop-label">Solution</div>
+          <p>Three redesign proposals: backlit buttons with transparent icons, elevated tactile feedback, and a reduced interface with 5–10 buttons where rarely-used functions move to the TV menu.</p>
+          <div class="drop-label">Method</div>
+          <p>Usage study · Interviews · Observations · HTA · UTA · PEPA · Light level measurement</p>
+          <div class="drop-label">Course</div>
+          <p>MMT011 , Ergonomics, Chalmers University of Technology</p>
+        </div>
+      </div>
+    </div>`,
+
     4: `<div class="project-dropdown-inner" style="align-items:stretch; grid-template-columns: 1fr 1fr 1fr;">
       <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
         <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Persona , Ruler-arketyp</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Kall.<br>Ambitiös.<br>Prestige.</p>
+          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Persona , Ruler archetype</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Cold.<br>Ambitious.<br>Prestige.</p>
         </div>
         <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Jenny, 42, programledare på TV4. Maktgalen och strukturerad , högtalaren är en pjäs som tar plats i rummet och hänvisar till någonting utanför dess teknik.</p>
+          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Jenny, 42, programme director at TV4. Power-driven and structured — the speaker is a centrepiece that commands the room and signals something beyond its technology.</p>
         </div>
         <div style="display:flex; gap:.6rem; flex-wrap:wrap; padding-top:1rem; border-top:1px solid #222;">
-          ${['Kall','Prestige','Pålitlig','Spetsig','Ambitiös','Ordentlig'].map(w =>
+          ${['Cold','Prestige','Reliable','Sharp','Ambitious','Orderly'].map(w =>
             `<span style="font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid #333;color:#666;padding:.25rem .6rem;">${w}</span>`
           ).join('')}
         </div>
       </div>
       <div class="drop-col">
-        <img src="images/speaker/speaker.jpg" alt="Högtalare" style="width:100%; max-height:400px; object-fit:contain; display:block;" />
+        <img src="images/speaker/speaker.jpg" alt="Speaker" style="width:100%; max-height:400px; object-fit:contain; display:block;" />
       </div>
       <div class="drop-col drop-col-right">
         <div class="drop-text">
-          <div class="drop-label">Uppdrag</div>
-          <p>Designa en personaanpassad högtalare utifrån ett produktsemiotiskt förhållningssätt , från teckenanalys och arketyp till CAD-modellering och rendering.</p>
-          <div class="drop-label">Lösning</div>
-          <p>Koncept 3 "Pingvinen" , en uppåtsträvande rotationskropp i mörk metall med mesh-galler och silverblad. Skulpturalt uttryck som tar plats i rummet och associerar till höghus och stadskänsla.</p>
-          <div class="drop-label">Verktyg</div>
-          <p>Alias · VRED · Teckenanalys · Artefaktboard · Moodboard · Expression board · Intervjuer</p>
-          <div class="drop-label">Kurs</div>
-          <p>Produktsemiotik, Chalmers tekniska högskola</p>
+          <div class="drop-label">Brief</div>
+          <p>Design a persona-driven speaker using a product semiotic approach — from sign analysis and archetype to CAD modelling and rendering.</p>
+          <div class="drop-label">Solution</div>
+          <p>Concept 3 "The Penguin" — an upward-reaching body of revolution in dark metal with mesh grille and silver blades. A sculptural statement that dominates a room and evokes high-rises and city energy.</p>
+          <div class="drop-label">Tools</div>
+          <p>Alias · VRED · Sign analysis · Artefact board · Mood board · Expression board · Interviews</p>
+          <div class="drop-label">Course</div>
+          <p>Product Semiotics, Chalmers University of Technology</p>
         </div>
       </div>
     </div>`,
-    3: `<div class="project-dropdown-inner" style="align-items:stretch;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
-        <div style="border-left: 3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Jag förstår inte skillnaden på tillbaka, hem och översikts&shy;knapparna."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.8rem;">, Intervjuad användare</p>
-        </div>
-        <div style="border-left: 3px solid #333; padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; color:#aaa; line-height:1.3; text-transform:uppercase; margin:0;">"Det finns för många knappar."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555; margin-top:.8rem;">, Intervjuad användare</p>
-        </div>
-        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">63,7</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lux , kvällsmätning</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">482</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lux , lunchtid</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">4</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">användare intervjuade</span>
-          </div>
-        </div>
-      </div>
-      <div class="drop-col drop-col-right">
-        <div class="drop-text">
-          <div class="drop-label">Uppdrag</div>
-          <p>Identifiera och analysera centrala ergonomiska aspekter hos TV-fjärrkontrollen samt ta fram designförslag för förbättrad interaktion.</p>
-          <div class="drop-label">Problem</div>
-          <p>Användare förstod inte ovanliga knappar, upplevde gränssnittet som för komplext och hade svårt att se knappar i mörka miljöer , den vanligaste användningstidpunkten.</p>
-          <div class="drop-label">Lösning</div>
-          <p>Tre omdesignförslag: bakgrundsbelysta knappar med transparenta ikoner, förhöjd taktil feedback och ett reducerat gränssnitt med 5–10 knappar där sällan använda funktioner flyttas till TV:ns meny.</p>
-          <div class="drop-label">Metod</div>
-          <p>Användningsstudie · Intervjuer · Observationer · HTA · UTA · PEPA · Ljusstyrkemätning</p>
-          <div class="drop-label">Kurs</div>
-          <p>MMT011 , Ergonomi, Chalmers tekniska högskola</p>
-        </div>
-      </div>
-    </div>`,
+
     5: `<div class="project-dropdown-inner" style="align-items:stretch;">
       <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between;">
         <div class="drop-text">
-          <div class="drop-label">Uppdrag</div>
-          <p>Designa en användaranpassad förvaringslösning för Styrsöbolagets landgångar i Göteborgs södra skärgård , landgångar som vid starka vindar blåser ned i vattnet och kräver kostsam bärgning.</p>
+          <div class="drop-label">Brief</div>
+          <p>Design a user-adapted storage solution for Styrsöbolaget's gangways in Gothenburg's southern archipelago — gangways that in strong winds blow into the water, requiring costly retrieval.</p>
           <div class="drop-label">Problem</div>
-          <p>Landgångarna förvarades löst på kajen och saknade säkring. Befintliga lösningar på marknaden mötte inte kraven kring platseffektivitet, flyttbarhet och väderrobusthet.</p>
+          <p>The gangways were stored loosely on the quayside without securing. Existing market solutions did not meet requirements around space efficiency, portability and weather robustness.</p>
           <div class="drop-label">Process</div>
-          <p>Iterativ designprocess med observationer och intervjuer med däcksmän, morfologisk matris, elimineringsmatris, mock-ups och CAD-modellering.</p>
-          <div class="drop-label">Verktyg</div>
-          <p>Intervjuer · Observationer · WBS · GANTT · Morfologisk matris · Elimineringsmatris · CAD · A1-poster</p>
-          <div class="drop-label">Kurs</div>
-          <p>MMF274 , Design och användaranpassning, Chalmers</p>
+          <p>Iterative design process with observations and interviews with deck crew, morphological matrix, elimination matrix, mock-ups and CAD modelling.</p>
+          <div class="drop-label">Tools</div>
+          <p>Interviews · Observations · WBS · GANTT · Morphological matrix · Elimination matrix · CAD · A1 poster</p>
+          <div class="drop-label">Course</div>
+          <p>MMF274 , Design and User Adaptation, Chalmers</p>
         </div>
         <div style="margin-top:1.5rem; border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700; color:var(--black); line-height:1.3; text-transform:uppercase; margin:0;">"Det ska gå snabbt. Vi vill att de sjunker."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.8rem;">, Däcksman & Västtrafik, användarintervjuer</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700; color:var(--black); line-height:1.3; text-transform:uppercase; margin:0;">"It needs to be fast. We want them to sink."</p>
+          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.8rem;">, Deck crew & Västtrafik, user interviews</p>
         </div>
       </div>
       <div class="drop-col" style="display:flex; align-items:center; justify-content:center; background:#f0f0f0; padding:1.5rem; position:relative;">
         <div style="position:absolute; top:1rem; left:1rem; font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:#999;">A1 Poster</div>
-        <div style="position:absolute; bottom:1rem; right:1rem; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#999;">↗ klicka för att expandera</div>
+        <div style="position:absolute; bottom:1rem; right:1rem; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#999;">↗ click to expand</div>
         <div style="box-shadow: 0 8px 40px rgba(0,0,0,0.18); max-height:400px; overflow:hidden; display:flex; cursor:zoom-in;" onclick="document.getElementById('poster-modal').style.display='flex'">
           <img src="images/poster/poster.png" alt="D&A Poster" style="width:100%; max-height:400px; object-fit:contain; display:block;" />
         </div>
       </div>
-    </div>
-    <div id="poster-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:999; align-items:center; justify-content:center; cursor:zoom-out;">
-      <img src="images/poster/poster.png" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
     </div>`,
-    default: `<p style="color:var(--gray); font-size:.85rem;">Projektinfo kommer snart.</p>`,
+
     6: `<div class="project-dropdown-inner" style="display:grid; grid-template-columns:0.8fr 1fr 1.8fr; gap:0; align-items:stretch;">
       <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
         <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Kandidatarbete 2026</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">AI.<br>Grepp.<br>Klättring.</p>
+          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Bachelor Thesis 2026</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">AI.<br>Holds.<br>Climbing.</p>
         </div>
         <div style="border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Kan generativ design och topologioptimering ersätta manuell skulptering av klättergrepp?"</p>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Can generative design and topology optimisation replace manual sculpting of climbing holds?"</p>
         </div>
         <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Traditionell grepp­tillverkning kräver handformning, gjutning och iterativ finslipning. Vi undersökte om en AI-driven pipeline kan generera geometriskt varierade och strukturellt valida grepp.</p>
+          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Traditional hold manufacturing requires hand-forming, casting and iterative finishing. We investigated whether an AI-driven pipeline can generate geometrically varied and structurally valid holds.</p>
         </div>
         <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">300+</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">skannade grepp</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">scanned holds</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">52.7%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">igenkänningsgrad</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">recognition rate</span>
           </div>
           <div>
             <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">34%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">material­besparing</span>
+            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">material saved</span>
           </div>
         </div>
       </div>
       <div class="drop-col" style="padding:2rem; display:flex; flex-direction:column; gap:1rem; border-left:var(--border);">
         <div class="drop-text">
-          <div class="drop-label">Uppdrag</div>
-          <p>Undersöka om generativ design, topologioptimering och additiv tillverkning kan integreras i en strukturerad pipeline för klättergrepps­produktion.</p>
-          <div class="drop-label">Metod</div>
-          <p>Två generativa metoder implementerades: retrieval-baserad generering via latent rymdsinterpolation, och Latent Representation Learning med PointNet++-encoder och FoldingNet-decoder. Genererade grepp exporterades till CAD via Blender, optimerades topologiskt i MATLAB och tillverkades med SLS-utskrift.</p>
-          <div class="drop-label">Resultat</div>
-          <p>Pipeline genererar geometriskt koherenta grepp inom rätt kategori med 88-93% rekonstruktionskvalitet. Topologioptimering reducerade materialvolym med 34% med säkerhetsfaktor 1.72. SLS-utskrivna grepp klarade dynamisk last på 105 kg utan deformation.</p>
-          <div class="drop-label">Verktyg</div>
-          <p>Python · PyTorch · PointNet++ · Blender · MATLAB · Artec EVA 3D-scanner · SLS-printer · FEM-analys</p>
+          <div class="drop-label">Brief</div>
+          <p>Investigate whether generative design, topology optimisation and additive manufacturing can be integrated into a structured pipeline for climbing hold production.</p>
+          <div class="drop-label">Method</div>
+          <p>Two generative methods were implemented: retrieval-based generation via latent space interpolation, and Latent Representation Learning with a PointNet++ encoder and FoldingNet decoder. Generated holds were exported to CAD via Blender, topology-optimised in MATLAB and manufactured using SLS printing.</p>
+          <div class="drop-label">Results</div>
+          <p>The pipeline generates geometrically coherent holds within the correct category with 88–93% reconstruction quality. Topology optimisation reduced material volume by 34% at a safety factor of 1.72. SLS-printed holds withstood dynamic loads of 105 kg without deformation.</p>
+          <div class="drop-label">Tools</div>
+          <p>Python · PyTorch · PointNet++ · Blender · MATLAB · Artec EVA 3D scanner · SLS printer · FEM analysis</p>
           <div class="drop-label">Team</div>
           <p>Linus Andersson, Karin Cognell, Artur Rekstad, Klara Strandberg, Thea Söderstjerna, Adrian Warg</p>
         </div>
       </div>
       <div class="drop-col" style="padding:2rem; border-left:var(--border);">
-        <div class="drop-label" style="margin-top:0;">Bilder</div>
+        <div class="drop-label" style="margin-top:0;">Images</div>
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-top:.75rem; align-items:stretch;">
           <div style="position:relative; background:#111; overflow:hidden; aspect-ratio:1/1.414;">
             <div id="kand-slider-track" style="display:flex; height:100%; transition:transform .35s cubic-bezier(0.4,0,0.2,1);">
@@ -886,40 +1005,87 @@
             <img src="images/kandidatarbete/poster.jpg" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
           </div>
         </div>
-        <p style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#444; margin-top:.75rem;">↗ klicka för att förstora</p>
+        <p style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#444; margin-top:.75rem;">↗ click to enlarge</p>
       </div>
     </div>`,
+
+    default: `<p style="color:var(--gray); font-size:.85rem;">Project info coming soon.</p>`,
   };
 
-  // Track which card is open per row
+  // ─── Card → row mapping (desktop) ────────────────────────────────────────────
+  const cardRow = { 0:'row1', 1:'row1', 2:'row1', 3:'row2', 4:'row2', 5:'row2', 6:'row3' };
+
+  // Track open state per row
   const rowState = { row1: null, row2: null, row3: null };
   const overlay = document.getElementById('page-overlay');
 
+  // ─── Mobile detection ─────────────────────────────────────────────────────────
+  function isMobile() { return window.innerWidth <= 900; }
+
+  // Track which card is open on mobile
+  let mobileOpenCard = null;
+
+  // ─── Close ALL dropdowns (desktop rows + mobile panel + card highlights) ──────
   function closeAll() {
-    Object.keys(rowState).forEach(rowId => {
-      if (rowState[rowId] !== null) {
-        document.getElementById('pw-' + rowState[rowId]).classList.remove('open');
-        document.getElementById(rowId).classList.remove('open');
-        rowState[rowId] = null;
-      }
+    // Desktop: close all three row dropdowns unconditionally
+    ['row1','row2','row3'].forEach(rowId => {
+      const row = document.getElementById(rowId);
+      if (row) row.classList.remove('open');
+      const contentEl = document.getElementById('dd-content-' + rowId);
+      if (contentEl) contentEl.innerHTML = '';
+      rowState[rowId] = null;
     });
+    // Mobile: hide the shared panel
+    const mobPanel = document.getElementById('mob-panel');
+    if (mobPanel) { mobPanel.style.display = 'none'; mobPanel.innerHTML = ''; }
+    mobileOpenCard = null;
+    // Card highlight
+    document.querySelectorAll('.project-wrapper.open').forEach(el => el.classList.remove('open'));
     overlay.classList.remove('active');
   }
 
+  // ─── Toggle a project dropdown ────────────────────────────────────────────────
   function toggleDropdown(cardIndex, rowId) {
     const pw = document.getElementById('pw-' + cardIndex);
-    const row = document.getElementById(rowId);
-    const contentEl = document.getElementById('dd-content-' + rowId);
-    const isThisOpen = rowState[rowId] === cardIndex;
+    const content = projectContent[cardIndex] || projectContent.default;
 
-    closeAll();
+    if (isMobile()) {
+      // ── Mobile: single shared panel injected right after the clicked card ──
+      const isOpen = mobileOpenCard === cardIndex;
+      closeAll();
+      if (!isOpen) {
+        mobileOpenCard = cardIndex;
+        pw.classList.add('open');
+        // Get or create the shared mobile panel
+        let mobPanel = document.getElementById('mob-panel');
+        if (!mobPanel) {
+          mobPanel = document.createElement('div');
+          mobPanel.id = 'mob-panel';
+          mobPanel.className = 'mobile-dropdown';
+        }
+        // Move it to sit right after the clicked card
+        pw.insertAdjacentElement('afterend', mobPanel);
+        mobPanel.innerHTML = '<div class="project-dropdown">' + content + '</div>';
+        mobPanel.style.display = 'block';
+        setTimeout(() => pw.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+      }
 
-    if (!isThisOpen) {
-      pw.classList.add('open');
-      contentEl.innerHTML = projectContent[cardIndex] || projectContent.default;
-      row.classList.add('open');
-      rowState[rowId] = cardIndex;
-      overlay.classList.add('active');
+    } else {
+      // ── Desktop: shared dropdown row after each group of 3 ─────────────────
+      const row = document.getElementById(rowId);
+      const contentEl = document.getElementById('dd-content-' + rowId);
+      const isThisOpen = rowState[rowId] === cardIndex;
+
+      closeAll();
+
+      if (!isThisOpen) {
+        pw.classList.add('open');
+        contentEl.innerHTML = content;
+        row.classList.add('open');
+        rowState[rowId] = cardIndex;
+        overlay.classList.add('active');
+        setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      }
     }
   }
 
@@ -927,11 +1093,11 @@
 
   document.addEventListener('click', function(e) {
     const inCard = e.target.closest('.project-wrapper');
-    const inDropdown = e.target.closest('.dropdown-row');
+    const inDropdown = e.target.closest('.dropdown-row, #mob-panel');
     if (!inCard && !inDropdown) closeAll();
   });
 
-  // Slider logic
+  // ─── Slider logic ─────────────────────────────────────────────────────────────
   const sliderState = {};
   function slideMove(id, dir) {
     const track = document.getElementById(id + '-track');
@@ -944,7 +1110,7 @@
     if (counter) counter.textContent = (sliderState[id] + 1) + ' / ' + total;
   }
 
-  // Skill bars
+  // ─── Skill bars ───────────────────────────────────────────────────────────────
   const skillObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -958,19 +1124,22 @@
   }, { threshold: 0.3 });
   document.querySelectorAll('.bio-right').forEach(el => skillObs.observe(el));
 
+  // ─── Kandidatarbete slider ────────────────────────────────────────────────────
   let kandSliderIndex = 0;
   function kandSlide(dir) {
     const total = 3;
     kandSliderIndex = (kandSliderIndex + dir + total) % total;
-    document.getElementById('kand-slider-track').style.transform = `translateX(-${kandSliderIndex * 100}%)`;
-    document.getElementById('kand-slider-counter').textContent = (kandSliderIndex + 1) + ' / ' + total;
+    const track = document.getElementById('kand-slider-track');
+    const counter = document.getElementById('kand-slider-counter');
+    if (track) track.style.transform = `translateX(-${kandSliderIndex * 100}%)`;
+    if (counter) counter.textContent = (kandSliderIndex + 1) + ' / ' + total;
   }
 
-  // Kandidatarbete lightbox
+  // ─── Kandidatarbete lightbox ──────────────────────────────────────────────────
   const kandImages = [
-    { src: 'images/kandidatarbete/bild 1.jpg', cap: 'Bild 1' },
-    { src: 'images/kandidatarbete/bild 2.png', cap: 'Bild 2' },
-    { src: 'images/kandidatarbete/bild 3.jpg', cap: 'Bild 3' },
+    { src: 'images/kandidatarbete/bild 1.jpg', cap: 'Image 1' },
+    { src: 'images/kandidatarbete/bild 2.png', cap: 'Image 2' },
+    { src: 'images/kandidatarbete/bild 3.jpg', cap: 'Image 3' },
     { src: 'images/kandidatarbete/poster.jpg',  cap: 'A1 Poster' },
   ];
   let kandIndex = 0;
@@ -980,6 +1149,10 @@
     updateKandModal();
     document.getElementById('kand-modal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    // Hide all dropdowns so they don't show beneath the lightbox when scrolling
+    document.querySelectorAll('.dropdown-row').forEach(r => r.style.visibility = 'hidden');
+    const mob = document.getElementById('mob-panel');
+    if (mob) mob.style.visibility = 'hidden';
   }
   function updateKandModal() {
     document.getElementById('kand-modal-img').src = kandImages[kandIndex].src;
@@ -993,6 +1166,9 @@
     if (e && e.target !== document.getElementById('kand-modal')) return;
     document.getElementById('kand-modal').style.display = 'none';
     document.body.style.overflow = '';
+    document.querySelectorAll('.dropdown-row').forEach(r => r.style.visibility = '');
+    const mob = document.getElementById('mob-panel');
+    if (mob) mob.style.visibility = '';
   }
   document.addEventListener('keydown', e => {
     if (document.getElementById('kand-modal').style.display !== 'flex') return;
@@ -1000,14 +1176,14 @@
     if (e.key === 'ArrowLeft')  shiftKand(-1);
     if (e.key === 'Escape') closeKandModal({ target: document.getElementById('kand-modal') });
   });
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById('form-msg').style.display = 'block';
-    e.target.reset();
-  }
 </script>
-<!-- Mecenat modal - lives in body so position:fixed works correctly -->
+
+<!-- Poster modal -->
+<div id="poster-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out;">
+  <img src="images/poster/poster.png" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
+</div>
+
+<!-- Mecenat modal -->
 <div id="mecenat-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; flex-direction:column; gap:1rem;">
   <div style="position:relative; width:90vw; max-width:800px;">
     <div class="slider" id="mecenat-modal-slider" style="border:none; background:transparent;">
@@ -1026,12 +1202,12 @@
       <div class="slider-counter" id="mecenat-modal-counter">1 / 8</div>
     </div>
   </div>
-  <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555;">klicka var som helst för att stänga</p>
+  <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555;">click anywhere to close</p>
 </div>
 
 <!-- Kandidatarbete lightbox -->
 <div id="kand-modal" onclick="closeKandModal(event)" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.97); z-index:9999; align-items:center; justify-content:center; flex-direction:column; gap:1rem; cursor:zoom-out;">
-  <button onclick="closeKandModal()" style="position:fixed; top:1.5rem; right:2rem; background:none; border:none; color:#555; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; cursor:crosshair;">✕ stäng</button>
+  <button onclick="closeKandModal()" style="position:fixed; top:1.5rem; right:2rem; background:none; border:none; color:#555; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; cursor:crosshair;">✕ close</button>
   <button onclick="event.stopPropagation(); shiftKand(-1)" style="position:fixed; left:1.5rem; top:50%; transform:translateY(-50%); background:none; border:1px solid #333; color:#555; font-family:'Space Mono',monospace; font-size:1rem; padding:.7rem 1rem; cursor:crosshair;">←</button>
   <img id="kand-modal-img" src="" style="max-width:85vw; max-height:85vh; object-fit:contain;" />
   <p id="kand-modal-cap" style="font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:#444;"></p>
