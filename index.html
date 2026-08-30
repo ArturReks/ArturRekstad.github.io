@@ -1,1103 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PORTFOLIO , ARTUR REKSTAD</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --black: #0a0a0a;
-      --white: #f5f0e8;
-      --red: #e63000;
-      --gray: #888;
-      --border: 2px solid var(--black);
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Artur Rekstad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --k:#000; --w:#fff;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--w);color:var(--k);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;cursor:default;}
+  ::selection{background:var(--k);color:var(--w);}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+  .display{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;letter-spacing:.005em;line-height:.86;}
+  .mono{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#666;}
 
-    body {
-      background: var(--white);
-      color: var(--black);
-      font-family: 'Space Mono', monospace;
-      font-size: 14px;
-      line-height: 1.6;
-      cursor: crosshair;
-    }
+  a{color:inherit;}
+  section{padding:7vw 6vw;}
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: repeating-linear-gradient(to right, rgba(0,0,0,.04) 0 1px, transparent 1px 80px);
-      pointer-events: none;
-      z-index: 0;
-    }
+  /* NAV */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.6rem 6vw;position:sticky;top:0;background:rgba(255,255,255,.88);backdrop-filter:blur(6px);z-index:100;}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.04em;text-decoration:none;color:var(--k);}
+  nav ul{list-style:none;display:flex;gap:2rem;}
+  nav ul li a{text-decoration:none;font-size:.78rem;letter-spacing:.06em;color:#555;transition:color .15s;}
+  nav ul li a:hover{color:var(--k);}
+  @media(max-width:800px){ nav ul{display:none;} }
 
-    /* NAV */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--black); color: var(--white);
-      display: grid; grid-template-columns: 1fr auto;
-      align-items: center; padding: 0 2rem; border-bottom: var(--border);
-    }
-    .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: .15em; text-transform: uppercase; padding: 1rem 0; color: var(--white); text-decoration: none; }
-    .nav-logo span { color: var(--red); }
-    nav ul { list-style: none; display: flex; }
-    nav ul li a { display: block; padding: .85rem 1.2rem; color: var(--white); text-decoration: none; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; border-left: 1px solid #333; transition: background .15s; }
-    nav ul li a:hover { background: var(--red); }
+  /* HERO with video */
+  #hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 6vw 6vw;overflow:hidden;background:#000;}
+  .bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05) brightness(.75);}
+  .hero-scrim{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.75) 0%, rgba(0,0,0,.15) 55%, rgba(0,0,0,.35) 100%);}
+  .hero-inner{position:relative;z-index:2;color:var(--w);max-width:74rem;}
+  .hero-kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#bbb;margin-bottom:1.2rem;}
+  h1.hero-title{font-size:clamp(3.2rem,9.5vw,9rem);color:var(--w);}
+  .hero-sub{margin-top:1.8rem;max-width:34rem;color:#ddd;font-size:1rem;font-weight:400;}
+  .hero-cta{margin-top:2.6rem;display:flex;gap:2.2rem;align-items:center;flex-wrap:wrap;}
+  .link-line{text-decoration:none;font-size:.85rem;letter-spacing:.03em;color:var(--w);border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:.2rem;transition:border-color .15s,opacity .15s;}
+  .link-line:hover{border-color:var(--w);}
+  .link-line.dim{color:#ccc;}
 
-    /* HERO */
-    #hero { min-height: 90vh; display: grid; grid-template-columns: 1fr 1fr; border-bottom: var(--border); overflow: hidden; }
-    .hero-left { padding: 4rem 3rem; border-right: var(--border); display: flex; flex-direction: column; justify-content: flex-end; }
-    .hero-label { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; display: flex; align-items: center; gap: .5rem; }
-    .hero-label::before { content: ''; display: block; width: 2rem; height: 2px; background: var(--red); }
-    h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(4rem, 10vw, 9rem); line-height: .92; text-transform: uppercase; letter-spacing: -.02em; }
-    h1 .outline { -webkit-text-stroke: 2px var(--black); color: transparent; }
-    .hero-sub { margin-top: 2rem; max-width: 28rem; color: #444; font-size: .85rem; }
-    .hero-cta { margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn { font-family: 'Space Mono', monospace; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; padding: .8rem 1.6rem; text-decoration: none; border: var(--border); transition: background .15s, color .15s; cursor: crosshair; }
-    .btn-primary { background: var(--black); color: var(--white); }
-    .btn-primary:hover { background: var(--red); border-color: var(--red); }
-    .btn-outline:hover { background: var(--black); color: var(--white); }
-    .hero-right { background: var(--black); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .hero-right-inner { color: var(--white); padding: 4rem 3rem; }
-    .big-number { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(6rem, 15vw, 16rem); line-height: 1; -webkit-text-stroke: 1px rgba(255,255,255,.15); color: transparent; position: absolute; bottom: -1rem; right: -1rem; pointer-events: none; }
-    .hero-stats { display: grid; grid-template-rows: 1fr 1fr; gap: 2rem; }
-    .stat-item { border-left: 3px solid var(--red); padding-left: 1rem; }
-    .stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--white); }
-    .stat-label { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: #888; }
+  /* opacity load */
+  .hero-inner>*{opacity:0;transform:translateY(16px);}
+  body.loaded .hero-kicker{animation:up .5s .1s ease forwards;}
+  body.loaded h1.hero-title{animation:up .7s .2s ease forwards;}
+  body.loaded .hero-sub{animation:up .6s .38s ease forwards;}
+  body.loaded .hero-cta{animation:up .6s .5s ease forwards;}
+  @keyframes up{to{opacity:1;transform:translateY(0);}}
 
-    /* SECTION HEADER */
-    section { position: relative; }
-    .section-header { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 1.5rem 3rem; border-bottom: var(--border); }
-    .section-num { font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .1em; color: var(--red); }
-    .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
-    .section-line { height: 1px; background: #ccc; }
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
 
-    /* ABOUT */
-    #about .content { display: grid; grid-template-columns: 1fr 1fr; }
-    .bio-left { padding: 4rem 3rem; border-right: var(--border); }
-    .bio-left h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(2.5rem, 5vw, 5rem); text-transform: uppercase; line-height: 1; margin-bottom: 2rem; }
-    .bio-left p { color: #333; line-height: 1.9; margin-bottom: 1rem; font-size: .85rem; }
-    .bio-right { padding: 4rem 3rem; }
-    .skill-row { display: flex; justify-content: space-between; align-items: center; padding: .8rem 0; border-bottom: 1px solid #ddd; font-size: .78rem; }
-    .skill-bar { width: 8rem; height: 4px; background: #ddd; position: relative; flex-shrink: 0; }
-    .skill-bar::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; background: var(--black); width: var(--w, 0%); transition: width 1s ease; }
+  /* section label — no box, no number stamp */
+  .s-label{display:flex;align-items:baseline;gap:.9rem;margin-bottom:3rem;}
+  .s-label .mono{color:#999;}
+  .s-label .rule{flex:1;height:1px;background:#ddd;}
 
-    /* FULL PAGE OVERLAY when dropdown open */
-    .page-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.45);
-      z-index: 50;
-      pointer-events: all;
-      cursor: crosshair;
-      transition: opacity .2s;
-    }
-    .page-overlay.active { display: block; }
+  /* ABOUT */
+  #about{display:grid;grid-template-columns:1.1fr .9fr;gap:5vw;}
+  #about h2.display{font-size:clamp(2.4rem,5.4vw,4.6rem);margin-bottom:2rem;}
+  #about p{max-width:32rem;color:#333;margin-bottom:1.2rem;font-size:1rem;}
+  .skills{margin-top:2.5rem;display:flex;flex-direction:column;}
+  .skill-row{display:flex;align-items:baseline;justify-content:space-between;padding:.7rem 0;border-top:1px solid #eee;font-size:.85rem;}
+  .skill-row:last-child{border-bottom:1px solid #eee;}
+  .skill-row .pct{font-family:'IBM Plex Mono',monospace;color:#999;font-size:.72rem;}
 
-    /* =============================================
-       PROJECTS GRID — desktop 3-col, mobile 1-col
-       ============================================= */
-    #projects .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
+  /* PROJECTS — editorial index list, no card boxes */
+  #projects .index-list{display:flex;flex-direction:column;}
+  .p-row{border-top:1px solid #e5e5e5;}
+  .p-row:last-child{border-bottom:1px solid #e5e5e5;}
+  .p-head{display:grid;grid-template-columns:3.2rem 1fr auto auto;align-items:center;gap:1.5rem;padding:1.6rem 0;cursor:pointer;transition:padding-left .2s;}
+  .p-head:hover{padding-left:.6rem;}
+  .p-i{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:#aaa;}
+  .p-title{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;font-size:clamp(1.5rem,3.4vw,2.6rem);letter-spacing:.005em;line-height:1;}
+  .p-tag{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:#999;white-space:nowrap;}
+  .p-plus{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:300;color:#999;transition:transform .2s;}
+  .p-row.open .p-plus{transform:rotate(45deg);}
+  .p-row.open .p-head{padding-left:.6rem;}
+  @media(max-width:760px){ .p-head{grid-template-columns:2rem 1fr auto;} .p-tag{display:none;} }
 
-    .project-wrapper {
-      border-right: var(--border);
-      border-bottom: var(--border);
-      transition: opacity .2s;
-      position: relative;
-      z-index: 60;
-      display: flex;
-      flex-direction: column;
-    }
-    .project-wrapper.card-3,
-    .project-wrapper.card-6 { border-right: none; }
+  .p-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .p-row.open .p-body{max-height:2400px;}
+  .p-body-inner{padding:0 0 3.2rem;display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;}
+  @media(max-width:800px){ .p-body-inner{grid-template-columns:1fr;gap:1.6rem;} }
+  .p-body-inner p{color:#333;font-size:.92rem;line-height:1.8;max-width:34rem;}
+  .p-field{margin-bottom:1.2rem;}
+  .p-field .mono{color:#999;display:block;margin-bottom:.3rem;}
+  .p-stats{display:flex;gap:2.5rem;margin-top:1.6rem;flex-wrap:wrap;}
+  .p-stats .n{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;display:block;line-height:1;}
+  .p-stats .l{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;color:#999;}
+  .p-quote{font-size:1.1rem;line-height:1.4;font-weight:500;margin:1rem 0;max-width:30rem;}
+  .p-quote .attr{display:block;margin-top:.5rem;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:#999;font-weight:400;}
+  .p-img{width:100%;display:block;filter:grayscale(100%) contrast(1.02);margin-top:1rem;transition:filter .3s ease;}
+  .p-img:hover{filter:grayscale(0%) contrast(1.02);}
+  .p-inline-btn{margin-top:1.2rem;background:none;border:none;border-bottom:1px solid var(--k);font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:0 0 .2rem;cursor:pointer;}
 
-    .project-card {
-      padding: 2rem;
-      cursor: crosshair;
-      transition: background .15s, color .15s;
-      height: 100%;
-      box-sizing: border-box;
-    }
+  /* slider (kept minimal, borderless) */
+  .slider{position:relative;overflow:hidden;background:#111;width:100%;margin-top:1rem;}
+  .slider-track{display:flex;transition:transform .35s cubic-bezier(.4,0,.2,1);}
+  .slide{min-width:100%;aspect-ratio:2000/1414;overflow:hidden;}
+  .slide img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%) contrast(1.02);transition:filter .3s ease;}
+  .slide:hover img{filter:grayscale(0%) contrast(1.02);}
+  #mecenat-modal-track .slide img{filter:none;}
+  .slide-placeholder{color:#666;font-size:.72rem;letter-spacing:.08em;text-align:center;padding:2rem;width:100%;font-family:'IBM Plex Mono',monospace;}
+  .slider-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.55);color:#fff;border:none;font-family:'IBM Plex Mono',monospace;font-size:1rem;padding:.7rem 1rem;cursor:pointer;z-index:10;}
+  .slider-btn:hover{background:rgba(0,0,0,.85);}
+  .slider-btn.prev{left:0;} .slider-btn.next{right:0;}
+  .slider-counter{position:absolute;bottom:.6rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);color:#ccc;font-size:.62rem;letter-spacing:.1em;padding:.25rem .7rem;font-family:'IBM Plex Mono',monospace;}
 
-    .project-card:hover,
-    .project-wrapper.open .project-card { background: var(--black); color: var(--white); }
+  /* CV */
+  #cv{display:grid;grid-template-columns:1fr 1fr;gap:5vw;}
+  .cv-title{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:1.6rem;}
+  .cv-item{padding:1.1rem 0;border-top:1px solid #eee;}
+  .cv-block:last-child .cv-item:last-child{border-bottom:1px solid #eee;}
+  .cv-item-head{display:flex;justify-content:space-between;gap:1rem;font-size:.9rem;}
+  .cv-item-title{font-weight:600;}
+  .cv-item-year{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:#999;white-space:nowrap;}
+  .cv-item-sub{font-size:.82rem;color:#888;margin-top:.2rem;}
+  .cv-item-desc{font-size:.82rem;color:#555;margin-top:.5rem;line-height:1.75;}
+  .cv-block{margin-bottom:2.6rem;}
 
-    .project-card:hover *,
-    .project-wrapper.open .project-card * { color: var(--white) !important; }
+  /* CONTACT */
+  #contact{background:var(--k);color:var(--w);display:grid;grid-template-columns:1fr 1fr;gap:5vw;}
+  #contact h2.display{color:var(--w);font-size:clamp(2.6rem,6vw,5.4rem);margin-bottom:1.6rem;}
+  #contact p{color:#aaa;max-width:22rem;}
+  .contact-links{margin-top:2.2rem;display:flex;flex-direction:column;gap:.2rem;}
+  .contact-link{text-decoration:none;color:#ccc;font-size:.92rem;padding:.7rem 0;border-top:1px solid #2a2a2a;transition:color .15s;}
+  .contact-link:last-child{border-bottom:1px solid #2a2a2a;}
+  .contact-link:hover{color:var(--w);}
+  .form-group{margin-bottom:1.5rem;}
+  label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:#777;margin-bottom:.4rem;}
+  input,textarea{width:100%;background:transparent;border:none;border-bottom:1px solid #444;color:var(--w);font-family:'Inter',sans-serif;font-size:.92rem;padding:.6rem 0;outline:none;transition:border-color .15s;}
+  input:focus,textarea:focus{border-color:var(--w);}
+  textarea{resize:none;min-height:7rem;}
+  .btn-send{background:none;border:none;border-bottom:2px solid var(--w);color:var(--w);font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.3rem 0;cursor:pointer;margin-top:.6rem;}
 
-    .project-card:hover .project-desc,
-    .project-wrapper.open .project-desc { color: #aaa !important; }
+  footer{background:var(--k);color:#555;display:flex;justify-content:space-between;padding:1.6rem 6vw 2.6rem;font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;flex-wrap:wrap;gap:.5rem;}
 
-    .project-card:hover .project-tag,
-    .project-wrapper.open .project-tag { border-color: var(--red) !important; color: var(--red) !important; }
-
-    .project-card:hover .project-arrow,
-    .project-wrapper.open .project-arrow { opacity: 1; }
-    .project-wrapper.open .project-arrow { transform: rotate(45deg); }
-
-    .project-num { font-family: 'Barlow Condensed', sans-serif; font-size: 3.5rem; font-weight: 900; line-height: 1; opacity: .12; margin-bottom: .5rem; }
-    .project-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 700; text-transform: uppercase; margin-bottom: .5rem; }
-    .project-desc { font-size: .78rem; color: #555; margin-bottom: 1.5rem; }
-    .project-footer { display: flex; justify-content: space-between; align-items: center; }
-    .project-tag { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; border: 1px solid #ccc; padding: .3rem .7rem; transition: .15s; }
-    .project-arrow { font-size: 1.4rem; font-weight: 300; opacity: 0; transition: opacity .15s, transform .2s ease; }
-
-    /* DROPDOWN ROW — spans all 3 columns on desktop */
-    .dropdown-row {
-      display: none;
-      grid-column: 1 / -1;
-      border-bottom: var(--border);
-      background: var(--white);
-      animation: slideDown .2s ease;
-      position: relative;
-      z-index: 60;
-    }
-    .dropdown-row.open { display: block; }
-
-    @keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-
-    .project-dropdown { padding: 2.5rem 3rem; }
-    .project-dropdown-inner { display: grid; grid-template-columns: 3fr 2fr; gap: 3rem; align-items: start; }
-
-    .drop-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-bottom: .4rem; margin-top: 1.2rem; }
-    .drop-label:first-child { margin-top: 0; }
-    .project-dropdown .drop-col p { font-size: .82rem; color: #333; line-height: 1.8; }
-
-    .drop-col-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-    }
-    .drop-col-right .drop-text { flex: 1; }
-
-    .drop-kpis { display: flex; gap: 1rem; margin-top: auto; padding-top: 1rem; }
-    .drop-kpi { background: var(--black); padding: 1rem 1.5rem; text-align: center; flex: 1; }
-    .drop-kpi-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 900; color: var(--red); display: block; }
-    .drop-kpi-label { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: #888; display: block; margin-top: .2rem; }
-
-    /* CV */
-    #cv .content { display: grid; grid-template-columns: 1fr 1fr; }
-    .cv-col { padding: 3rem; }
-    .cv-col:first-child { border-right: var(--border); }
-    .cv-section-title { font-family: 'Barlow Condensed', sans-serif; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; }
-    .cv-item { padding: 1.2rem 0; border-bottom: 1px solid #e0e0e0; }
-    .cv-item:last-child { border-bottom: none; }
-    .cv-item-header { display: flex; justify-content: space-between; margin-bottom: .3rem; gap: 1rem; }
-    .cv-item-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; }
-    .cv-item-year { font-size: .7rem; letter-spacing: .1em; background: var(--black); color: var(--white); padding: .2rem .5rem; align-self: flex-start; white-space: nowrap; flex-shrink: 0; }
-    .cv-item-sub { font-size: .78rem; color: var(--gray); }
-
-    /* CONTACT */
-    #contact { background: var(--black); color: var(--white); }
-    #contact .section-header { border-color: #333; }
-    #contact .section-title { color: var(--white); }
-    #contact .section-line { background: #444; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #333; }
-    .contact-info { padding: 4rem 3rem; border-right: 1px solid #333; }
-    .contact-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.5rem, 5vw, 5rem); font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 2rem; }
-    .contact-info h3 span { color: var(--red); }
-    .contact-links { margin-top: 2rem; }
-    .contact-link { display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #2a2a2a; color: #aaa; text-decoration: none; font-size: .78rem; transition: color .15s; }
-    .contact-link:hover { color: var(--white); }
-    .contact-link::before { content: '→'; color: var(--red); }
-    .contact-form { padding: 4rem 3rem; }
-    .form-group { margin-bottom: 1.5rem; }
-    label { display: block; font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: #666; margin-bottom: .4rem; }
-    input, textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #444; color: var(--white); font-family: 'Space Mono', monospace; font-size: .85rem; padding: .6rem 0; outline: none; transition: border-color .15s; cursor: crosshair; }
-    input:focus, textarea:focus { border-color: var(--red); }
-    textarea { resize: none; min-height: 8rem; }
-    .btn-send { background: var(--red); color: var(--white); border: 2px solid var(--red); font-family: 'Space Mono', monospace; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; padding: .9rem 2rem; cursor: crosshair; transition: background .15s; margin-top: 1rem; }
-    .btn-send:hover { background: transparent; }
-
-    footer { background: var(--black); color: #555; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; border-top: 1px solid #222; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; flex-wrap: wrap; gap: .5rem; }
-    footer span { color: var(--red); }
-
-    /* SLIDER */
-    .slider {
-      position: relative;
-      margin-top: .8rem;
-      border: var(--border);
-      overflow: hidden;
-      background: #111;
-      user-select: none;
-      width: 100%;
-    }
-    .slider-track {
-      display: flex;
-      transition: transform .35s cubic-bezier(0.4,0,0.2,1);
-    }
-    .slide {
-      min-width: 100%;
-      aspect-ratio: 2000 / 1414;
-      overflow: hidden;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      background: #111;
-    }
-    .slide-placeholder {
-      color: #555;
-      font-size: .72rem;
-      letter-spacing: .08em;
-      text-align: center;
-      padding: 2rem;
-      width: 100%;
-    }
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--black);
-      color: var(--white);
-      border: none;
-      font-family: 'Space Mono', monospace;
-      font-size: 1rem;
-      padding: .7rem 1rem;
-      cursor: crosshair;
-      transition: background .15s;
-      z-index: 10;
-    }
-    .slider-btn:hover { background: var(--red); }
-    .slider-btn.prev { left: 0; }
-    .slider-btn.next { right: 0; }
-    .slider-counter {
-      position: absolute;
-      bottom: .6rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,.7);
-      color: #aaa;
-      font-size: .65rem;
-      letter-spacing: .1em;
-      padding: .25rem .7rem;
-    }
-
-    /* =============================================
-       MOBILE RESPONSIVE
-       ============================================= */
-    @media (max-width: 900px) {
-      /* Nav */
-      nav { padding: 0 1rem; }
-      nav ul { display: none; }
-
-      /* Hero */
-      #hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 3rem 1.5rem 2rem; border-right: none; border-bottom: var(--border); justify-content: flex-start; }
-      .hero-right { min-height: 40vh; }
-      .hero-right-inner { padding: 2.5rem 1.5rem; }
-
-      /* Sections */
-      .section-header { padding: 1.2rem 1.5rem; }
-
-      /* About */
-      #about .content { grid-template-columns: 1fr; }
-      .bio-left { padding: 2.5rem 1.5rem; border-right: none; border-bottom: var(--border); }
-      .bio-right { padding: 2.5rem 1.5rem; }
-      .skill-row { font-size: .72rem; }
-
-      /* CV */
-      #cv .content { grid-template-columns: 1fr; }
-      .cv-col { padding: 2rem 1.5rem; }
-      .cv-col:first-child { border-right: none; border-bottom: var(--border); }
-
-      /* Contact */
-      .contact-grid { grid-template-columns: 1fr; }
-      .contact-info { padding: 2.5rem 1.5rem; border-right: none; border-bottom: 1px solid #222; }
-      .contact-form { padding: 2.5rem 1.5rem; }
-
-      footer { padding: 1.2rem 1.5rem; }
-
-      /* ---- PROJECT GRID MOBILE ----
-         Each card becomes full-width. The dropdown-row elements are
-         visually hidden from the grid flow and instead each card has
-         an inline dropdown rendered immediately after it via JS.
-         We hide the old .dropdown-row elements entirely on mobile
-         and show .mobile-dropdown divs instead.
-      */
-      #projects .grid {
-        grid-template-columns: 1fr;
-      }
-      .project-wrapper {
-        border-right: none !important;
-      }
-
-      /* Hide desktop dropdown rows on mobile */
-      .dropdown-row {
-        display: none !important;
-      }
-
-      /* Mobile shared panel: moved by JS to sit after the clicked card.
-         It lives inside the 1-col grid so no extra columns are needed. */
-      #mob-panel {
-        display: none;
-        grid-column: 1 / -1;
-        border-bottom: var(--border);
-        background: var(--white);
-        animation: slideDown .2s ease;
-        position: relative;
-        z-index: 60;
-      }
-
-      .project-dropdown { padding: 1.5rem; }
-      .project-dropdown-inner {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-      }
-
-      /* Full-width showcase card on mobile */
-      #pw-6 { background: var(--black); }
-      #pw-6 .project-card {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1rem !important;
-        padding: 1.5rem !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: clamp(3rem, 14vw, 5rem); }
-      .hero-sub { font-size: .8rem; }
-      .project-dropdown { padding: 1.2rem 1rem; }
-    }
-  </style>
-
-  <script>
-    (function(){
-      var c=document.createElement('canvas');c.width=c.height=32;
-      var x=c.getContext('2d');
-      x.fillStyle='#e63000';x.fillRect(0,0,32,32);
-      x.fillStyle='#f5f0e8';x.font='bold 15px serif';x.textAlign='center';x.textBaseline='middle';
-      x.fillText('AR',16,17);
-      var l=document.createElement('link');l.rel='icon';l.href=c.toDataURL();
-      document.head.appendChild(l);
-    })();
-  </script>
+  .page-overlay{display:none;}
+</style>
+<script>
+(function(){var c=document.createElement('canvas');c.width=c.height=32;var x=c.getContext('2d');
+x.fillStyle='#000';x.fillRect(0,0,32,32);x.fillStyle='#fff';x.font='bold 15px monospace';x.textAlign='center';x.textBaseline='middle';x.fillText('AR',16,17);
+var l=document.createElement('link');l.rel='icon';l.href=c.toDataURL();document.head.appendChild(l);})();
+</script>
 </head>
 <body>
-<div class="page-overlay" id="page-overlay"></div>
 
 <nav>
-  <a href="#hero" class="nav-logo">ARTUR&nbsp;<span>REKSTAD</span></a>
+  <a href="#hero" class="nav-logo">Artur Rekstad</a>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#cv">CV</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="grafisk.html">Photo & Design</a></li>
+    <li><a href="grafisk.html">Photo &amp; Design</a></li>
   </ul>
 </nav>
 
 <section id="hero">
-  <div class="hero-left">
-    <div class="hero-label">Industrial Design Engineering , Chalmers University of Technology</div>
-    <h1>Design<br><span class="outline">meets</span><br>Engineering.</h1>
-    <p class="hero-sub">Industrial Design Engineering student at Chalmers. B.Sc. ongoing towards M.Sc., combining mechanical engineering with product development and visual design. Structured, technically grounded and comfortable taking responsibility.</p>
+  <!--
+    VIDEO BACKGROUND
+    Drop your file(s) in a folder named "videos" next to this HTML file:
+      videos/hero-bg.mp4   (H.264, required)
+      videos/hero-bg.webm  (optional, better compression)
+    Recommended: 10–20s, seamless loop, muted (no audio needed — autoplay requires it),
+    compressed to roughly under 15MB so it loads fast. Until a file is added this
+    just shows solid black, so nothing breaks.
+  -->
+  <video class="bg-video" autoplay muted loop playsinline poster="">
+    <source src="videos/hero-bg.webm" type="video/webm">
+    <source src="videos/hero-bg.mp4" type="video/mp4">
+  </video>
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <div class="hero-kicker">Industrial Design Engineering — Chalmers University of Technology</div>
+    <h1 class="hero-title display">Design<br>meets<br>engineering.</h1>
+    <p class="hero-sub">B.Sc. ongoing towards M.Sc., combining mechanical engineering with product development and visual design. Structured, technically grounded and comfortable taking responsibility.</p>
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-primary">View my projects</a>
-      <a href="#contact" class="btn btn-outline">Get in touch</a>
+      <a href="#projects" class="link-line">View my projects</a>
+      <a href="#contact" class="link-line dim">Get in touch</a>
     </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-right-inner">
-      <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num">B.Sc.</div><div class="stat-label">Industrial Design Eng.</div></div>
-        <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Years at Chalmers</div></div>
-        <div class="stat-item"><div class="stat-num">CAD</div><div class="stat-label">CATIA · Alias · Inventor</div></div>
-      </div>
-    </div>
-    <div class="big-number">TD</div>
   </div>
 </section>
 
 <section id="about">
-  <div class="section-header">
-    <span class="section-num">01 /</span>
-    <span class="section-title">About me</span>
-    <div class="section-line"></div>
+  <div>
+    <h2 class="display reveal">Hi, I'm Artur.</h2>
+    <p class="reveal">I study Industrial Design Engineering at Chalmers University of Technology — a master's programme combining mechanics, materials engineering and manufacturing processes with product development and design.</p>
+    <p class="reveal">My strength lies in being technically grounded and analytical while having a strong eye for visual communication and design. I'm used to taking responsibility, coordinating projects and delivering high-quality work.</p>
   </div>
-  <div class="content">
-    <div class="bio-left">
-      <h2>Hi,<br>I'm<br>Artur.</h2>
-      <p>I study Industrial Design Engineering at Chalmers University of Technology — a master's programme combining mechanics, materials engineering and manufacturing processes with product development and design.</p>
-      <p>My strength lies in being technically grounded and analytical while having a strong eye for visual communication and design. I'm used to taking responsibility, coordinating projects and delivering high-quality work.</p>
-    </div>
-    <div class="bio-right">
-      <div class="cv-section-title" style="margin-bottom:2rem;">Skills</div>
-      <div class="skill-row"><span>CATIA · Alias · Inventor</span><div class="skill-bar" style="--w:85%"></div></div>
-      <div class="skill-row"><span>Figma / Interface Design</span><div class="skill-bar" style="--w:90%"></div></div>
-      <div class="skill-row"><span>Adobe Creative Suite</span><div class="skill-bar" style="--w:90%"></div></div>
-      <div class="skill-row"><span>Product Development &amp; Prototyping</span><div class="skill-bar" style="--w:80%"></div></div>
-      <div class="skill-row"><span>Programming (Python · OOP)</span><div class="skill-bar" style="--w:65%"></div></div>
-      <div class="skill-row"><span>FEA / Simulation</span><div class="skill-bar" style="--w:65%"></div></div>
-      <div class="skill-row"><span>VRED</span><div class="skill-bar" style="--w:60%"></div></div>
+  <div>
+    <div class="mono" style="margin-bottom:1rem;">Skills</div>
+    <div class="skills">
+      <div class="skill-row reveal"><span>CATIA · Alias · Inventor</span><span class="pct">85</span></div>
+      <div class="skill-row reveal"><span>Figma / Interface Design</span><span class="pct">90</span></div>
+      <div class="skill-row reveal"><span>Adobe Creative Suite</span><span class="pct">90</span></div>
+      <div class="skill-row reveal"><span>Product Dev. &amp; Prototyping</span><span class="pct">80</span></div>
+      <div class="skill-row reveal"><span>Programming (Python · OOP)</span><span class="pct">65</span></div>
+      <div class="skill-row reveal"><span>FEA / Simulation</span><span class="pct">65</span></div>
+      <div class="skill-row reveal"><span>VRED</span><span class="pct">60</span></div>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="section-header">
-    <span class="section-num">02 /</span>
-    <span class="section-title">Projects</span>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="grid">
-
-    <!-- CARD 1 -->
-    <div class="project-wrapper" id="pw-0">
-      <div class="project-card" onclick="toggleDropdown(0, 'row1')">
-        <div class="project-num">01</div>
-        <div class="project-title">Mecenat , Usability Redesign</div>
-        <p class="project-desc">Usability analysis and redesign of the Mecenat student app — from cluttered and ad-heavy to intuitive and efficient.</p>
-        <div class="project-footer">
-          <span class="project-tag">UX / Usability</span>
-          <span class="project-arrow">+</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 2 -->
-    <div class="project-wrapper" id="pw-1">
-      <div class="project-card" onclick="toggleDropdown(1, 'row1')">
-        <div class="project-num">02</div>
-        <div class="project-title">Sustainable Kettle</div>
-        <p class="project-desc">Circular redesign of a budget kettle — from 3 years of plastic to 30 years of bronze.</p>
-        <div class="project-footer">
-          <span class="project-tag">Sustainable Design</span>
-          <span class="project-arrow">+</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="project-wrapper card-3" id="pw-2">
-      <div class="project-card" onclick="toggleDropdown(2, 'row1')">
-        <div class="project-num">03</div>
-        <div class="project-title">Innovative Grocery Carrier</div>
-        <p class="project-desc">Ergonomic shopping bag with triangular form and multiple carry modes — designed for young adults without a car.</p>
-        <div class="project-footer">
-          <span class="project-tag">Product Design</span>
-          <span class="project-arrow">+</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DROPDOWN ROW 1 (desktop only) -->
-    <div class="dropdown-row" id="row1">
-      <div class="project-dropdown" id="dd-content-row1"></div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="project-wrapper" id="pw-3">
-      <div class="project-card" onclick="toggleDropdown(3, 'row2')">
-        <div class="project-num">04</div>
-        <div class="project-title">Ergonomics , TV Remote</div>
-        <p class="project-desc">Ergonomic analysis and redesign of the TV remote — cognitive load, physical impact and lighting environment.</p>
-        <div class="project-footer">
-          <span class="project-tag">Ergonomics</span>
-          <span class="project-arrow">+</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 5 -->
-    <div class="project-wrapper" id="pw-4">
-      <div class="project-card" onclick="toggleDropdown(4, 'row2')">
-        <div class="project-num">05</div>
-        <div class="project-title">Product Semiotics , Speaker</div>
-        <p class="project-desc">Persona-driven speaker design using a product semiotic approach — expression, message and form in Alias and VRED.</p>
-        <div class="project-footer">
-          <span class="project-tag">CAD / Semiotics</span>
-          <span class="project-arrow">+</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 6 -->
-    <div class="project-wrapper card-6" id="pw-5">
-      <div class="project-card" onclick="toggleDropdown(5, 'row2')">
-        <div class="project-num">06</div>
-        <div class="project-title">Design & User Adaptation</div>
-        <p class="project-desc">Quayside storage for boat owners — iterative design process from requirements to physical prototype and A1 poster.</p>
-        <div class="project-footer">
-          <span class="project-tag">Design Process</span>
-          <span class="project-arrow">+</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DROPDOWN ROW 2 (desktop only) -->
-    <div class="dropdown-row" id="row2">
-      <div class="project-dropdown" id="dd-content-row2"></div>
-    </div>
-
-    <!-- CARD 7 - Full width showcase -->
-    <div class="project-wrapper" id="pw-6" style="grid-column: 1 / -1; border-right: none; background: var(--black);">
-      <div class="project-card" onclick="toggleDropdown(6, 'row3')" style="display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap:2rem; padding:2.5rem 3rem;">
-        <div style="display:flex; align-items:center; gap:2rem;">
-          <div class="project-num" style="opacity:1; font-size:5rem; margin:0; color:var(--red);">07</div>
-          <div>
-            <div style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:.5rem;">Bachelor Thesis · Chalmers 2026</div>
-            <div class="project-title" style="color:var(--white); font-size:2rem; margin:0;">Generative Design of Climbing Holds</div>
-          </div>
-        </div>
-        <p class="project-desc" style="color:#999; max-width:40rem;">AI-driven pipeline for generating climbing holds using machine learning, topology optimisation and additive manufacturing. PointNet++, FEM analysis and SLS printing.</p>
-        <div style="display:flex; align-items:center; gap:2rem;">
-          <span class="project-arrow" style="opacity:1; color:var(--white);">+</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DROPDOWN ROW 3 (desktop only) -->
-    <div class="dropdown-row" id="row3">
-      <div class="project-dropdown" id="dd-content-row3"></div>
-    </div>
-
-  </div>
+  <div class="s-label"><span class="mono">Projects</span><div class="rule"></div><span class="mono">07</span></div>
+  <div class="index-list" id="index-list"></div>
 </section>
 
 <section id="cv">
-  <div class="section-header">
-    <span class="section-num">03 /</span>
-    <span class="section-title">CV &amp; Experience</span>
-    <div class="section-line"></div>
-  </div>
-  <div class="content">
-    <div class="cv-col">
-      <div class="cv-section-title">Education</div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">M.Sc. Industrial Design Engineering</span><span class="cv-item-year">2026—28</span></div>
-        <div class="cv-item-sub">Chalmers University of Technology · In progress</div>
-      </div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">B.Sc. Industrial Design Engineering</span><span class="cv-item-year">2023—26</span></div>
-        <div class="cv-item-sub">Chalmers University of Technology</div>
-      </div>
-      <div class="cv-section-title" style="margin-top:2rem;">Courses</div>
-      <div class="cv-item">
-        <div class="cv-item-sub" style="line-height:1.9;">Mechanics · Materials Engineering · Manufacturing Technology · Construction Engineering · Simulation-Based Strength of Materials · Applied Mechatronics · Mathematical Analysis · Linear Algebra · Mathematical Statistics · Applied Object-Oriented Programming · Introduction to AI</div>
-      </div>
-      <div class="cv-section-title" style="margin-top:2rem;">Awards</div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Scholarship</span></div>
-        <div class="cv-item-sub">Scholarship for high academic achievement</div>
-      </div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Autodesk Inventor Certified User</span></div>
-        <div class="cv-item-sub">Autodesk Certification</div>
-      </div>
+  <div class="cv-block">
+    <div class="cv-title">Education</div>
+    <div class="cv-item">
+      <div class="cv-item-head"><span class="cv-item-title">M.Sc. Industrial Design Engineering</span><span class="cv-item-year">2026—28</span></div>
+      <div class="cv-item-sub">Chalmers University of Technology · In progress</div>
     </div>
-    <div class="cv-col">
-      <div class="cv-section-title">Experience</div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Art Director</span><span class="cv-item-year">2023—2026</span></div>
-        <div class="cv-item-sub">Chalmers Student Union Promotion</div>
-        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Responsible for visual concepts, layout and final production for large-scale events. Produces print and digital material in Adobe Suite and Figma. Coordinates projects to ensure quality and delivery deadlines.</div>
-      </div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Maths Tutor</span><span class="cv-item-year">2023—2024</span></div>
-        <div class="cv-item-sub">Studybuddy</div>
-        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Tutors students in mathematics and technical subjects. Strong ability to explain complex concepts clearly.</div>
-      </div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Unit Manager (summer)</span><span class="cv-item-year">2022—24</span></div>
-        <div class="cv-item-sub">Kolmårdens Djurpark</div>
-        <div class="cv-item-sub" style="margin-top:.4rem; line-height:1.8;">Led teams of 10–25 staff. Responsible for scheduling, flow optimisation and problem-solving in a fast-paced environment.</div>
-      </div>
-      <div class="cv-item">
-        <div class="cv-item-header"><span class="cv-item-title">Cashier (summer)</span><span class="cv-item-year">2025</span></div>
-        <div class="cv-item-sub">Willys</div>
-      </div>
+    <div class="cv-item">
+      <div class="cv-item-head"><span class="cv-item-title">B.Sc. Industrial Design Engineering</span><span class="cv-item-year">2023—26</span></div>
+      <div class="cv-item-sub">Chalmers University of Technology</div>
+    </div>
+  </div>
+  <div class="cv-block">
+    <div class="cv-title">Courses</div>
+    <div class="cv-item" style="border-bottom:1px solid #eee;">
+      <div class="cv-item-desc">Mechanics · Materials Engineering · Manufacturing Technology · Construction Engineering · Simulation-Based Strength of Materials · Applied Mechatronics · Mathematical Analysis · Linear Algebra · Mathematical Statistics · Applied Object-Oriented Programming · Introduction to AI</div>
+    </div>
+  </div>
+  <div class="cv-block" style="grid-column:1/2;">
+    <div class="cv-title">Awards</div>
+    <div class="cv-item">
+      <div class="cv-item-head"><span class="cv-item-title">Scholarship</span></div>
+      <div class="cv-item-sub">Scholarship for high academic achievement</div>
+    </div>
+    <div class="cv-item" style="border-bottom:1px solid #eee;">
+      <div class="cv-item-head"><span class="cv-item-title">Autodesk Inventor Certified User</span></div>
+      <div class="cv-item-sub">Autodesk Certification</div>
+    </div>
+  </div>
+  <div class="cv-block" style="grid-column:2/3;grid-row:1/4;">
+    <div class="cv-title">Experience</div>
+    <div class="cv-item">
+      <div class="cv-item-head"><span class="cv-item-title">Art Director</span><span class="cv-item-year">2023—26</span></div>
+      <div class="cv-item-sub">Chalmers Student Union Promotion</div>
+      <div class="cv-item-desc">Responsible for visual concepts, layout and final production for large-scale events. Produces print and digital material in Adobe Suite and Figma. Coordinates projects to ensure quality and delivery deadlines.</div>
+    </div>
+    <div class="cv-item">
+      <div class="cv-item-head"><span class="cv-item-title">Maths Tutor</span><span class="cv-item-year">2023—24</span></div>
+      <div class="cv-item-sub">Studybuddy</div>
+      <div class="cv-item-desc">Tutors students in mathematics and technical subjects. Strong ability to explain complex concepts clearly.</div>
+    </div>
+    <div class="cv-item">
+      <div class="cv-item-head"><span class="cv-item-title">Unit Manager (summer)</span><span class="cv-item-year">2022—24</span></div>
+      <div class="cv-item-sub">Kolmårdens Djurpark</div>
+      <div class="cv-item-desc">Led teams of 10–25 staff. Responsible for scheduling, flow optimisation and problem-solving in a fast-paced environment.</div>
+    </div>
+    <div class="cv-item" style="border-bottom:1px solid #eee;">
+      <div class="cv-item-head"><span class="cv-item-title">Cashier (summer)</span><span class="cv-item-year">2025</span></div>
+      <div class="cv-item-sub">Willys</div>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="section-header">
-    <span class="section-num">04 /</span>
-    <span class="section-title">Contact</span>
-    <div class="section-line" style="background:#333;"></div>
+  <div>
+    <h2 class="display">Let's talk design.</h2>
+    <p>Open to internships, collaborations and interesting conversations about design and technology.</p>
+    <div class="contact-links">
+      <a href="mailto:rekstadartur@gmail.com" class="contact-link">rekstadartur@gmail.com</a>
+      <a href="https://linkedin.com/in/artur-rekstad" class="contact-link" target="_blank">linkedin.com/in/artur-rekstad</a>
+      <a href="tel:0763038767" class="contact-link">076-303 87 67</a>
+    </div>
   </div>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h3>Let's<br>talk<br><span>design.</span></h3>
-      <p style="color:#888; font-size:.8rem; max-width:22rem;">Open to internships, collaborations and interesting conversations about design and technology.</p>
-      <div class="contact-links">
-        <a href="mailto:rekstadartur@gmail.com" class="contact-link">rekstadartur@gmail.com</a>
-        <a href="https://linkedin.com/in/artur-rekstad" class="contact-link" target="_blank">linkedin.com/in/artur-rekstad</a>
-        <a href="tel:0763038767" class="contact-link">076-303 87 67</a>
-      </div>
+  <div>
+    <div id="form-success" style="display:none;padding-bottom:1.2rem;">
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.02em;">Message sent.</p>
+      <p style="font-size:.8rem;color:#888;margin-top:.3rem;">I'll get back to you as soon as I can.</p>
     </div>
-    <div class="contact-form">
-      <div id="form-success" style="display:none; border-left:3px solid var(--red); padding:1rem 1.2rem; margin-bottom:1.5rem;">
-        <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; color:var(--white);">Message sent.</p>
-        <p style="font-size:.75rem; color:#888; margin-top:.3rem;">I'll get back to you as soon as I can.</p>
-      </div>
-      <div id="form-error" style="display:none; border-left:3px solid #c00; padding:1rem 1.2rem; margin-bottom:1.5rem;">
-        <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; text-transform:uppercase; color:var(--white);">Something went wrong.</p>
-        <p style="font-size:.75rem; color:#888; margin-top:.3rem;">Please try again or email me directly.</p>
-      </div>
-      <form id="contact-form">
-        <input type="hidden" name="access_key" value="83e3fefe-26c9-442b-8b16-9dabbe0a75ec" />
-        <input type="hidden" name="subject" value="Portfolio contact" />
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-        <div class="form-group"><label>Your name</label><input type="text" name="name" placeholder="Anna Andersson" required /></div>
-        <div class="form-group"><label>Email address</label><input type="email" name="email" placeholder="anna@example.com" required /></div>
-        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project or why you'd like to connect..." required></textarea></div>
-        <button type="submit" class="btn-send" id="submit-btn">Send message →</button>
-      </form>
-      <script>
-        document.getElementById('contact-form').addEventListener('submit', async function(e) {
-          e.preventDefault();
-          const btn = document.getElementById('submit-btn');
-          btn.textContent = 'Sending...';
-          btn.disabled = true;
-
-          const data = Object.fromEntries(new FormData(this));
-          const res = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(data)
-          }).catch(() => null);
-
-          const ok = res && res.ok && (await res.json()).success;
-          document.getElementById('form-success').style.display = ok ? 'block' : 'none';
-          document.getElementById('form-error').style.display = ok ? 'none' : 'block';
-          if (ok) this.style.display = 'none';
-          else { btn.textContent = 'Send message →'; btn.disabled = false; }
-        });
-      </script>
+    <div id="form-error" style="display:none;padding-bottom:1.2rem;">
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.02em;">Something went wrong.</p>
+      <p style="font-size:.8rem;color:#888;margin-top:.3rem;">Please try again or email me directly.</p>
     </div>
+    <form id="contact-form">
+      <input type="hidden" name="access_key" value="83e3fefe-26c9-442b-8b16-9dabbe0a75ec" />
+      <input type="hidden" name="subject" value="Portfolio contact" />
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="form-group"><label>Your name</label><input type="text" name="name" placeholder="Anna Andersson" required /></div>
+      <div class="form-group"><label>Email address</label><input type="email" name="email" placeholder="anna@example.com" required /></div>
+      <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project or why you'd like to connect..." required></textarea></div>
+      <button type="submit" class="btn-send" id="submit-btn">Send message →</button>
+    </form>
+    <script>
+      document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        const data = Object.fromEntries(new FormData(this));
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        }).catch(() => null);
+        const ok = res && res.ok && (await res.json()).success;
+        document.getElementById('form-success').style.display = ok ? 'block' : 'none';
+        document.getElementById('form-error').style.display = ok ? 'none' : 'block';
+        if (ok) this.style.display = 'none';
+        else { btn.textContent = 'Send message →'; btn.disabled = false; }
+      });
+    </script>
   </div>
 </section>
 
 <footer>
-  <div>© 2025 Artur Rekstad , Industrial Design Engineering, Chalmers</div>
-  <div>Built with <span>♥</span> and plain HTML</div>
+  <div>© 2025 Artur Rekstad — Industrial Design Engineering, Chalmers</div>
+  <div>Built with plain HTML</div>
 </footer>
 
 <script>
-  // ─── Project content (English) ───────────────────────────────────────────────
-  const projectContent = {
-    0: `<div class="project-dropdown-inner" style="align-items:stretch;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
-        <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">User Testing</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Cluttered.<br>Ad-heavy.<br>Unused.</p>
-        </div>
-        <div style="border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Games? What are you talking about?"</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.6rem;">, Test participant FFP1</p>
-        </div>
-        <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; color:#aaa; line-height:1.3; text-transform:uppercase; margin:0;">"It feels like an ad platform, not fun to use."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555; margin-top:.6rem;">, Test participant FFP6</p>
-        </div>
-        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">34%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">faster tasks</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">66%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">preferred redesign</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">6</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">test participants</span>
-          </div>
+  const projects = [
+    {
+      title: 'Mecenat, Usability Redesign', tag: 'UX / Usability',
+      body: `<div>
+        <p style="font-family:'Bebas Neue',sans-serif;font-size:2rem;text-transform:uppercase;line-height:.95;margin-bottom:1.2rem;">Cluttered. Ad-heavy. Unused.</p>
+        <p class="p-quote">"Games? What are you talking about?"<span class="attr">Test participant, FFP1</span></p>
+        <p class="p-quote" style="opacity:.6;">"It feels like an ad platform, not fun to use."<span class="attr">Test participant, FFP6</span></p>
+        <div class="p-stats">
+          <div><span class="n">34%</span><span class="l">faster tasks</span></div>
+          <div><span class="n">66%</span><span class="l">preferred redesign</span></div>
+          <div><span class="n">6</span><span class="l">participants</span></div>
         </div>
       </div>
-      <div class="drop-col drop-col-right" style="display:flex; flex-direction:column; gap:0;">
-        <div class="drop-text" style="flex:1;">
-          <div class="drop-label">Brief</div>
-          <p>Investigate and improve the usability of the Mecenat student app — a tool for student discounts, student ID and student lifestyle content.</p>
-          <div class="drop-label">Problem</div>
-          <p>User testing showed the app felt cluttered and advertisement-heavy. Most features were unknown — student ID and discounts were recognised by all, but games (0%) and tips (6%) were barely discovered.</p>
-          <div class="drop-label">Solution</div>
-          <p>Redesign of the home screen, campaign page and menu structure focusing on clearer information hierarchy, reduced cognitive load and improved guessability.</p>
-          <div class="drop-label">Tools</div>
-          <p>Figma · User interviews · Formative &amp; summative evaluation · A/B testing</p>
-          <div class="drop-label">Team</div>
-          <p>Sonja Bergman, Silja Kuang, Karin Lindgren, Artur Rekstad, Amelie Russberg</p>
-        </div>
-        <div style="margin-top:1.5rem;">
-          <button onclick="document.getElementById('mecenat-modal').style.display='flex'" style="background:var(--black); border:none; font-family:'Space Mono',monospace; font-size:.65rem; letter-spacing:.12em; text-transform:uppercase; cursor:crosshair; padding:.75rem 1.2rem; color:var(--white); display:inline-flex; align-items:center; gap:.6rem;">
-            ↗ View presentation slides
-          </button>
-        </div>
-      </div>
-    </div>`,
-
-    1: `<div class="project-dropdown-inner" style="align-items:stretch;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
-        <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Sustainable Redesign</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">3 years<br>plastic.<br>30 years<br>bronze.</p>
-        </div>
-        <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">The reference product yellows, breaks and gets thrown away. The new one boils for 30 years — and when you're done, you return it for a discount.</p>
-        </div>
-        <div style="border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Bronze develops a patina over time — the product becomes more unique the longer it's used."</p>
-        </div>
-        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">30%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lower CO₂/year</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">82%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lower eco cost/year</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">10×</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">longer lifespan</span>
-          </div>
+      <div>
+        <div class="p-field"><span class="mono">Brief</span><p>Investigate and improve the usability of the Mecenat student app — a tool for student discounts, student ID and student lifestyle content.</p></div>
+        <div class="p-field"><span class="mono">Problem</span><p>User testing showed the app felt cluttered and advertisement-heavy. Student ID and discounts were recognised by all, but games (0%) and tips (6%) were barely discovered.</p></div>
+        <div class="p-field"><span class="mono">Solution</span><p>Redesign of the home screen, campaign page and menu structure focusing on clearer information hierarchy and improved guessability.</p></div>
+        <div class="p-field"><span class="mono">Tools</span><p>Figma · User interviews · Formative &amp; summative evaluation · A/B testing</p></div>
+        <div class="p-field"><span class="mono">Team</span><p>Sonja Bergman, Silja Kuang, Karin Lindgren, Artur Rekstad, Amelie Russberg</p></div>
+        <button class="p-inline-btn" onclick="document.getElementById('mecenat-modal').style.display='flex'">View presentation slides →</button>
+      </div>`
+    },
+    {
+      title: 'Sustainable Kettle', tag: 'Sustainable Design',
+      body: `<div>
+        <p style="font-family:'Bebas Neue',sans-serif;font-size:2rem;text-transform:uppercase;line-height:.95;margin-bottom:1.2rem;">3 years plastic. 30 years bronze.</p>
+        <p style="font-size:.88rem;color:#555;margin-bottom:1.2rem;">The reference product yellows, breaks and gets thrown away. The new one boils for 30 years — and when you're done, you return it for a discount.</p>
+        <p class="p-quote">"Bronze develops a patina over time — the product becomes more unique the longer it's used."</p>
+        <div class="p-stats">
+          <div><span class="n">30%</span><span class="l">lower CO₂/yr</span></div>
+          <div><span class="n">82%</span><span class="l">lower eco cost/yr</span></div>
+          <div><span class="n">10×</span><span class="l">longer lifespan</span></div>
         </div>
       </div>
-      <div class="drop-col drop-col-right" style="display:flex; flex-direction:column; justify-content:space-between; gap:1.5rem;">
-        <div class="drop-text">
-          <div class="drop-label">Brief</div>
-          <p>Investigate and redesign a budget kettle from a sustainable, circular perspective — from linear consumer product to long-lived quality product.</p>
-          <div class="drop-label">Problem</div>
-          <p>The reference product (Clas Ohlsson, 149 SEK) was estimated to have a 3-year lifespan. Plastic casing that yellows, difficult to repair and manufactured in China.</p>
-          <div class="drop-label">Solution</div>
-          <p>Bronze body with stainless steel inner wall, induction base and handle in Swedish birch. Manufactured in Germany. Return-deposit system for circular lifecycle.</p>
-          <div class="drop-label">Tools</div>
-          <p>Granta EduPack · EcoAudit · EcoCost · LCA · TNS 4 system conditions</p>
+      <div>
+        <div class="p-field"><span class="mono">Brief</span><p>Investigate and redesign a budget kettle from a sustainable, circular perspective — from linear consumer product to long-lived quality product.</p></div>
+        <div class="p-field"><span class="mono">Problem</span><p>The reference product (Clas Ohlson, 149 SEK) was estimated to have a 3-year lifespan — plastic casing that yellows, difficult to repair, manufactured in China.</p></div>
+        <div class="p-field"><span class="mono">Solution</span><p>Bronze body with stainless steel inner wall, induction base and handle in Swedish birch. Manufactured in Germany. Return-deposit system for circular lifecycle.</p></div>
+        <div class="p-field"><span class="mono">Tools</span><p>Granta EduPack · EcoAudit · EcoCost · LCA · TNS 4 system conditions</p></div>
+        <img src="images/kettle/kettle.png" alt="Sustainable kettle" class="p-img" />
+      </div>`
+    },
+    {
+      title: 'Innovative Grocery Carrier', tag: 'Product Design',
+      body: `<div>
+        <p style="font-family:'Bebas Neue',sans-serif;font-size:2rem;text-transform:uppercase;line-height:.95;margin-bottom:1.2rem;">Broke. No car. Always rushing.</p>
+        <p style="font-size:.88rem;color:#555;margin-bottom:1.2rem;">Lives in a flat. Shops spontaneously after work. Takes public transport. Has neither space nor time for a bulky bag.</p>
+        <div class="p-stats">
+          <div><span class="n">20–35</span><span class="l">target age</span></div>
+          <div><span class="n">4</span><span class="l">carry modes</span></div>
+          <div><span class="n">18</span><span class="l">concepts</span></div>
         </div>
-        <img src="images/kettle/kettle.png" alt="Sustainable kettle" style="width:100%; display:block; border: 2px solid #0a0a0a; background:#0a0a0a;" />
-      </div>
-    </div>`,
-
-    2: `<div class="project-dropdown-inner" style="align-items:stretch;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
-        <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Target User</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Broke.<br>No car.<br>Always<br>rushing.</p>
-        </div>
-        <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Lives in a flat. Shops spontaneously after work. Takes public transport. Has neither space nor time for a bulky bag.</p>
-        </div>
-        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">20–35</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">target age</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">4</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">carry modes</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">18</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">concepts evaluated</span>
-          </div>
-        </div>
-      </div>
-      <div class="drop-col">
         <div class="slider" id="bag-slider">
           <div class="slider-track" id="bag-track">
-            <div class="slide"><img src="images/bag/bag1.jpg" alt="bag 1" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag1.jpg</div>'" /></div>
-            <div class="slide"><img src="images/bag/bag2.jpg" alt="bag 2" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag2.jpg</div>'" /></div>
-            <div class="slide"><img src="images/bag/bag3.jpg" alt="bag 3" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag3.jpg</div>'" /></div>
-            <div class="slide"><img src="images/bag/bag4.jpg" alt="bag 4" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag4.jpg</div>'" /></div>
-            <div class="slide"><img src="images/bag/bag5.jpg" alt="bag 5" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag5.jpg</div>'" /></div>
-            <div class="slide"><img src="images/bag/bag6.jpg" alt="bag 6" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag6.jpg</div>'" /></div>
-            <div class="slide"><img src="images/bag/bag7.jpg" alt="bag 7" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag7.jpg</div>'" /></div>
+            <div class="slide"><img src="images/bag/bag1.jpg" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag1.jpg</div>'" /></div>
+            <div class="slide"><img src="images/bag/bag2.jpg" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag2.jpg</div>'" /></div>
+            <div class="slide"><img src="images/bag/bag3.jpg" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag3.jpg</div>'" /></div>
+            <div class="slide"><img src="images/bag/bag4.jpg" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag4.jpg</div>'" /></div>
+            <div class="slide"><img src="images/bag/bag5.jpg" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag5.jpg</div>'" /></div>
+            <div class="slide"><img src="images/bag/bag6.jpg" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag6.jpg</div>'" /></div>
+            <div class="slide"><img src="images/bag/bag7.jpg" onerror="this.parentElement.innerHTML='<div class=slide-placeholder>bag7.jpg</div>'" /></div>
           </div>
-          <button class="slider-btn prev" onclick="slideMove('bag', -1)">←</button>
-          <button class="slider-btn next" onclick="slideMove('bag', 1)">→</button>
+          <button class="slider-btn prev" onclick="event.stopPropagation();slideMove('bag',-1)">←</button>
+          <button class="slider-btn next" onclick="event.stopPropagation();slideMove('bag',1)">→</button>
           <div class="slider-counter" id="bag-counter">1 / 7</div>
         </div>
       </div>
-      <div class="drop-col drop-col-right">
-        <div class="drop-text">
-          <div class="drop-label">Brief</div>
-          <p>Develop an innovative product for transporting groceries from the store to home — without a car — for young adults early in their working lives.</p>
-          <div class="drop-label">Problem</div>
-          <p>The target group relies on public transport, cycling and walking. Existing bags lack the ergonomics, adaptability and aesthetic that suits an active urban lifestyle.</p>
-          <div class="drop-label">Solution</div>
-          <p>The Triangle — a volume-adjustable bag with a triangular form and four carry modes: tote, backpack, shoulder bag and duffel. Insulated outer pocket for frozen goods, adjustable straps and collapsible base for compact storage.</p>
-          <div class="drop-label">Method</div>
-          <p>Braindrawing · Brainstorming · Morphological matrix · Elimination matrix · Pugh matrix · User interviews · Physical prototype</p>
-          <div class="drop-label">Team</div>
-          <p>Amanda Gavelin, Artur Rekstad, Sonja Bergman, Linnea Landin, Dan Wester</p>
+      <div>
+        <div class="p-field"><span class="mono">Brief</span><p>Develop an innovative product for transporting groceries from the store to home — without a car — for young adults early in their working lives.</p></div>
+        <div class="p-field"><span class="mono">Problem</span><p>The target group relies on public transport, cycling and walking. Existing bags lack the ergonomics, adaptability and aesthetic that suits an active urban lifestyle.</p></div>
+        <div class="p-field"><span class="mono">Solution</span><p>The Triangle — a volume-adjustable bag with a triangular form and four carry modes: tote, backpack, shoulder bag and duffel. Insulated outer pocket, adjustable straps and collapsible base.</p></div>
+        <div class="p-field"><span class="mono">Method</span><p>Braindrawing · Brainstorming · Morphological matrix · Elimination matrix · Pugh matrix · User interviews · Physical prototype</p></div>
+        <div class="p-field"><span class="mono">Team</span><p>Amanda Gavelin, Artur Rekstad, Sonja Bergman, Linnea Landin, Dan Wester</p></div>
+      </div>`
+    },
+    {
+      title: 'Ergonomics, TV Remote', tag: 'Ergonomics',
+      body: `<div>
+        <p class="p-quote">"I don't understand the difference between the back, home and overview buttons."<span class="attr">Interviewed user</span></p>
+        <p class="p-quote" style="opacity:.6;">"There are too many buttons."<span class="attr">Interviewed user</span></p>
+        <div class="p-stats">
+          <div><span class="n">63.7</span><span class="l">lux — evening</span></div>
+          <div><span class="n">482</span><span class="l">lux — midday</span></div>
+          <div><span class="n">4</span><span class="l">users interviewed</span></div>
         </div>
       </div>
-    </div>`,
-
-    3: `<div class="project-dropdown-inner" style="align-items:stretch;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
-        <div style="border-left: 3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.4rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"I don't understand the difference between the back, home and overview buttons."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.8rem;">, Interviewed user</p>
+      <div>
+        <div class="p-field"><span class="mono">Brief</span><p>Identify and analyse the central ergonomic aspects of the TV remote and develop design proposals for improved interaction.</p></div>
+        <div class="p-field"><span class="mono">Problem</span><p>Users didn't understand unfamiliar buttons, experienced the interface as overly complex, and struggled to see buttons in dark environments — the most common usage context.</p></div>
+        <div class="p-field"><span class="mono">Solution</span><p>Three redesign proposals: backlit buttons with transparent icons, elevated tactile feedback, and a reduced interface with 5–10 buttons where rarely-used functions move to the TV menu.</p></div>
+        <div class="p-field"><span class="mono">Method</span><p>Usage study · Interviews · Observations · HTA · UTA · PEPA · Light level measurement</p></div>
+        <div class="p-field"><span class="mono">Course</span><p>MMT011 — Ergonomics, Chalmers University of Technology</p></div>
+      </div>`
+    },
+    {
+      title: 'Product Semiotics, Speaker', tag: 'CAD / Semiotics',
+      body: `<div>
+        <p style="font-family:'Bebas Neue',sans-serif;font-size:2rem;text-transform:uppercase;line-height:.95;margin-bottom:1.2rem;">Cold. Ambitious. Prestige.</p>
+        <p style="font-size:.88rem;color:#555;margin-bottom:1.2rem;">Jenny, 42, programme director at TV4. Power-driven and structured — the speaker is a centrepiece that commands the room and signals something beyond its technology.</p>
+        <img src="images/speaker/speaker.jpg" alt="Speaker" class="p-img" style="max-height:280px;object-fit:contain;" />
+      </div>
+      <div>
+        <div class="p-field"><span class="mono">Brief</span><p>Design a persona-driven speaker using a product semiotic approach — from sign analysis and archetype to CAD modelling and rendering.</p></div>
+        <div class="p-field"><span class="mono">Solution</span><p>Concept 3, "The Penguin" — an upward-reaching body of revolution in dark metal with mesh grille and silver blades. A sculptural statement that dominates a room and evokes high-rises and city energy.</p></div>
+        <div class="p-field"><span class="mono">Tools</span><p>Alias · VRED · Sign analysis · Artefact board · Mood board · Expression board · Interviews</p></div>
+        <div class="p-field"><span class="mono">Course</span><p>Product Semiotics, Chalmers University of Technology</p></div>
+      </div>`
+    },
+    {
+      title: 'Design &amp; User Adaptation', tag: 'Design Process',
+      body: `<div>
+        <div class="p-field"><span class="mono">Brief</span><p>Design a user-adapted storage solution for Styrsöbolaget's gangways in Gothenburg's southern archipelago — gangways that in strong winds blow into the water, requiring costly retrieval.</p></div>
+        <div class="p-field"><span class="mono">Problem</span><p>The gangways were stored loosely on the quayside without securing. Existing market solutions did not meet requirements around space efficiency, portability and weather robustness.</p></div>
+        <div class="p-field"><span class="mono">Process</span><p>Iterative design process with observations and interviews with deck crew, morphological matrix, elimination matrix, mock-ups and CAD modelling.</p></div>
+        <div class="p-field"><span class="mono">Tools</span><p>Interviews · Observations · WBS · GANTT · Morphological matrix · Elimination matrix · CAD · A1 poster</p></div>
+        <div class="p-field"><span class="mono">Course</span><p>MMF274 — Design and User Adaptation, Chalmers</p></div>
+        <p class="p-quote" style="margin-top:1.2rem;">"It needs to be fast. We want them to sink."<span class="attr">Deck crew &amp; Västtrafik, user interviews</span></p>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;">
+        <div class="mono" style="margin-bottom:.6rem;">A1 poster — click to expand</div>
+        <img src="images/poster/poster.png" alt="D&amp;A Poster" class="p-img" style="cursor:zoom-in;max-height:560px;width:auto;max-width:100%;object-fit:contain;" onclick="document.getElementById('poster-modal').style.display='flex'" />
+      </div>`
+    },
+    {
+      title: 'Generative Design of Climbing Holds', tag: 'Bachelor Thesis · 2026',
+      body: `<div>
+        <p style="font-family:'Bebas Neue',sans-serif;font-size:2rem;text-transform:uppercase;line-height:.95;margin-bottom:1.2rem;">AI. Holds. Climbing.</p>
+        <p class="p-quote">"Can generative design and topology optimisation replace manual sculpting of climbing holds?"</p>
+        <p style="font-size:.88rem;color:#555;margin:1rem 0 1.2rem;">Traditional hold manufacturing requires hand-forming, casting and iterative finishing. We investigated whether an AI-driven pipeline can generate geometrically varied and structurally valid holds.</p>
+        <div class="p-stats">
+          <div><span class="n">300+</span><span class="l">scanned holds</span></div>
+          <div><span class="n">52.7%</span><span class="l">recognition rate</span></div>
+          <div><span class="n">34%</span><span class="l">material saved</span></div>
         </div>
-        <div style="border-left: 3px solid #333; padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; color:#aaa; line-height:1.3; text-transform:uppercase; margin:0;">"There are too many buttons."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555; margin-top:.8rem;">, Interviewed user</p>
-        </div>
-        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">63.7</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lux — evening reading</span>
+        <div class="slider" id="kand-slider" style="margin-top:1.4rem;">
+          <div class="slider-track" id="kand-track">
+            <div class="slide" style="aspect-ratio:1/1.2;cursor:zoom-in;" onclick="event.stopPropagation();openKandModal(0)"><img src="images/kandidatarbete/bild 1.jpg" /></div>
+            <div class="slide" style="aspect-ratio:1/1.2;cursor:zoom-in;" onclick="event.stopPropagation();openKandModal(1)"><img src="images/kandidatarbete/bild 2.png" /></div>
+            <div class="slide" style="aspect-ratio:1/1.2;cursor:zoom-in;" onclick="event.stopPropagation();openKandModal(2)"><img src="images/kandidatarbete/bild 3.jpg" /></div>
+            <div class="slide" style="aspect-ratio:1/1.2;cursor:zoom-in;" onclick="event.stopPropagation();openKandModal(3)"><img src="images/kandidatarbete/poster.jpg" /></div>
           </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">482</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">lux — midday</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">4</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">users interviewed</span>
-          </div>
+          <button class="slider-btn prev" onclick="event.stopPropagation();slideMove('kand',-1)">←</button>
+          <button class="slider-btn next" onclick="event.stopPropagation();slideMove('kand',1)">→</button>
+          <div class="slider-counter" id="kand-counter">1 / 4</div>
         </div>
       </div>
-      <div class="drop-col drop-col-right">
-        <div class="drop-text">
-          <div class="drop-label">Brief</div>
-          <p>Identify and analyse the central ergonomic aspects of the TV remote and develop design proposals for improved interaction.</p>
-          <div class="drop-label">Problem</div>
-          <p>Users didn't understand unfamiliar buttons, experienced the interface as overly complex, and struggled to see buttons in dark environments — the most common usage context.</p>
-          <div class="drop-label">Solution</div>
-          <p>Three redesign proposals: backlit buttons with transparent icons, elevated tactile feedback, and a reduced interface with 5–10 buttons where rarely-used functions move to the TV menu.</p>
-          <div class="drop-label">Method</div>
-          <p>Usage study · Interviews · Observations · HTA · UTA · PEPA · Light level measurement</p>
-          <div class="drop-label">Course</div>
-          <p>MMT011 , Ergonomics, Chalmers University of Technology</p>
-        </div>
+      <div>
+        <div class="p-field"><span class="mono">Brief</span><p>Investigate whether generative design, topology optimisation and additive manufacturing can be integrated into a structured pipeline for climbing hold production.</p></div>
+        <div class="p-field"><span class="mono">Method</span><p>Two generative methods: retrieval-based generation via latent space interpolation, and Latent Representation Learning with a PointNet++ encoder and FoldingNet decoder. Generated holds exported to CAD via Blender, topology-optimised in MATLAB and manufactured using SLS printing.</p></div>
+        <div class="p-field"><span class="mono">Results</span><p>Pipeline generates geometrically coherent holds with 88–93% reconstruction quality. Topology optimisation reduced material volume by 34% at safety factor 1.72. SLS-printed holds withstood dynamic loads of 105 kg without deformation.</p></div>
+        <div class="p-field"><span class="mono">Tools</span><p>Python · PyTorch · PointNet++ · Blender · MATLAB · Artec EVA 3D scanner · SLS printer · FEM analysis</p></div>
+        <div class="p-field"><span class="mono">Team</span><p>Linus Andersson, Karin Cognell, Artur Rekstad, Klara Strandberg, Thea Söderstjerna, Adrian Warg</p></div>
+      </div>`
+    },
+  ];
+
+  const list = document.getElementById('index-list');
+  projects.forEach((p, i) => {
+    const row = document.createElement('div');
+    row.className = 'p-row';
+    row.id = 'p-row-' + i;
+    row.innerHTML = `
+      <div class="p-head" onclick="toggleProject(${i})">
+        <span class="p-i">${String(i+1).padStart(2,'0')}</span>
+        <span class="p-title">${p.title}</span>
+        <span class="p-tag">${p.tag}</span>
+        <span class="p-plus">+</span>
       </div>
-    </div>`,
-
-    4: `<div class="project-dropdown-inner" style="align-items:stretch; grid-template-columns: 1fr 1fr 1fr;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
-        <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Persona , Ruler archetype</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">Cold.<br>Ambitious.<br>Prestige.</p>
-        </div>
-        <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Jenny, 42, programme director at TV4. Power-driven and structured — the speaker is a centrepiece that commands the room and signals something beyond its technology.</p>
-        </div>
-        <div style="display:flex; gap:.6rem; flex-wrap:wrap; padding-top:1rem; border-top:1px solid #222;">
-          ${['Cold','Prestige','Reliable','Sharp','Ambitious','Orderly'].map(w =>
-            `<span style="font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid #333;color:#666;padding:.25rem .6rem;">${w}</span>`
-          ).join('')}
-        </div>
-      </div>
-      <div class="drop-col">
-        <img src="images/speaker/speaker.jpg" alt="Speaker" style="width:100%; max-height:400px; object-fit:contain; display:block;" />
-      </div>
-      <div class="drop-col drop-col-right">
-        <div class="drop-text">
-          <div class="drop-label">Brief</div>
-          <p>Design a persona-driven speaker using a product semiotic approach — from sign analysis and archetype to CAD modelling and rendering.</p>
-          <div class="drop-label">Solution</div>
-          <p>Concept 3 "The Penguin" — an upward-reaching body of revolution in dark metal with mesh grille and silver blades. A sculptural statement that dominates a room and evokes high-rises and city energy.</p>
-          <div class="drop-label">Tools</div>
-          <p>Alias · VRED · Sign analysis · Artefact board · Mood board · Expression board · Interviews</p>
-          <div class="drop-label">Course</div>
-          <p>Product Semiotics, Chalmers University of Technology</p>
-        </div>
-      </div>
-    </div>`,
-
-    5: `<div class="project-dropdown-inner" style="align-items:stretch;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between;">
-        <div class="drop-text">
-          <div class="drop-label">Brief</div>
-          <p>Design a user-adapted storage solution for Styrsöbolaget's gangways in Gothenburg's southern archipelago — gangways that in strong winds blow into the water, requiring costly retrieval.</p>
-          <div class="drop-label">Problem</div>
-          <p>The gangways were stored loosely on the quayside without securing. Existing market solutions did not meet requirements around space efficiency, portability and weather robustness.</p>
-          <div class="drop-label">Process</div>
-          <p>Iterative design process with observations and interviews with deck crew, morphological matrix, elimination matrix, mock-ups and CAD modelling.</p>
-          <div class="drop-label">Tools</div>
-          <p>Interviews · Observations · WBS · GANTT · Morphological matrix · Elimination matrix · CAD · A1 poster</p>
-          <div class="drop-label">Course</div>
-          <p>MMF274 , Design and User Adaptation, Chalmers</p>
-        </div>
-        <div style="margin-top:1.5rem; border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700; color:var(--black); line-height:1.3; text-transform:uppercase; margin:0;">"It needs to be fast. We want them to sink."</p>
-          <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:var(--red); margin-top:.8rem;">, Deck crew & Västtrafik, user interviews</p>
-        </div>
-      </div>
-      <div class="drop-col" style="display:flex; align-items:center; justify-content:center; background:#f0f0f0; padding:1.5rem; position:relative;">
-        <div style="position:absolute; top:1rem; left:1rem; font-size:.6rem; letter-spacing:.15em; text-transform:uppercase; color:#999;">A1 Poster</div>
-        <div style="position:absolute; bottom:1rem; right:1rem; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#999;">↗ click to expand</div>
-        <div style="box-shadow: 0 8px 40px rgba(0,0,0,0.18); max-height:400px; overflow:hidden; display:flex; cursor:zoom-in;" onclick="document.getElementById('poster-modal').style.display='flex'">
-          <img src="images/poster/poster.png" alt="D&A Poster" style="width:100%; max-height:400px; object-fit:contain; display:block;" />
-        </div>
-      </div>
-    </div>`,
-
-    6: `<div class="project-dropdown-inner" style="display:grid; grid-template-columns:0.8fr 1fr 1.8fr; gap:0; align-items:stretch;">
-      <div class="drop-col" style="display:flex; flex-direction:column; justify-content:space-between; background:var(--black); padding:2rem; gap:2rem;">
-        <div>
-          <p style="font-size:.6rem; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin:0 0 1rem;">Bachelor Thesis 2026</p>
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:900; color:var(--white); line-height:1; text-transform:uppercase; margin:0;">AI.<br>Holds.<br>Climbing.</p>
-        </div>
-        <div style="border-left:3px solid var(--red); padding-left:1.2rem;">
-          <p style="font-family:'Barlow Condensed',sans-serif; font-size:.95rem; font-weight:700; color:var(--white); line-height:1.3; text-transform:uppercase; margin:0;">"Can generative design and topology optimisation replace manual sculpting of climbing holds?"</p>
-        </div>
-        <div style="border-left:3px solid #333; padding-left:1.2rem;">
-          <p style="font-size:.75rem; color:#aaa; line-height:1.8; margin:0;">Traditional hold manufacturing requires hand-forming, casting and iterative finishing. We investigated whether an AI-driven pipeline can generate geometrically varied and structurally valid holds.</p>
-        </div>
-        <div style="display:flex; gap:2rem; padding-top:1rem; border-top:1px solid #222;">
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">300+</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">scanned holds</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">52.7%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">recognition rate</span>
-          </div>
-          <div>
-            <span style="font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:900; color:var(--red); display:block;">34%</span>
-            <span style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#555;">material saved</span>
-          </div>
-        </div>
-      </div>
-      <div class="drop-col" style="padding:2rem; display:flex; flex-direction:column; gap:1rem; border-left:var(--border);">
-        <div class="drop-text">
-          <div class="drop-label">Brief</div>
-          <p>Investigate whether generative design, topology optimisation and additive manufacturing can be integrated into a structured pipeline for climbing hold production.</p>
-          <div class="drop-label">Method</div>
-          <p>Two generative methods were implemented: retrieval-based generation via latent space interpolation, and Latent Representation Learning with a PointNet++ encoder and FoldingNet decoder. Generated holds were exported to CAD via Blender, topology-optimised in MATLAB and manufactured using SLS printing.</p>
-          <div class="drop-label">Results</div>
-          <p>The pipeline generates geometrically coherent holds within the correct category with 88–93% reconstruction quality. Topology optimisation reduced material volume by 34% at a safety factor of 1.72. SLS-printed holds withstood dynamic loads of 105 kg without deformation.</p>
-          <div class="drop-label">Tools</div>
-          <p>Python · PyTorch · PointNet++ · Blender · MATLAB · Artec EVA 3D scanner · SLS printer · FEM analysis</p>
-          <div class="drop-label">Team</div>
-          <p>Linus Andersson, Karin Cognell, Artur Rekstad, Klara Strandberg, Thea Söderstjerna, Adrian Warg</p>
-        </div>
-      </div>
-      <div class="drop-col" style="padding:2rem; border-left:var(--border);">
-        <div class="drop-label" style="margin-top:0;">Images</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-top:.75rem; align-items:stretch;">
-          <div style="position:relative; background:#111; overflow:hidden; aspect-ratio:1/1.414;">
-            <div id="kand-slider-track" style="display:flex; height:100%; transition:transform .35s cubic-bezier(0.4,0,0.2,1);">
-              <div style="min-width:100%; height:100%; cursor:zoom-in;" onclick="openKandModal(0)">
-                <img src="images/kandidatarbete/bild 1.jpg" style="width:100%; height:100%; object-fit:cover; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
-              </div>
-              <div style="min-width:100%; height:100%; cursor:zoom-in;" onclick="openKandModal(1)">
-                <img src="images/kandidatarbete/bild 2.png" style="width:100%; height:100%; object-fit:cover; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
-              </div>
-              <div style="min-width:100%; height:100%; cursor:zoom-in;" onclick="openKandModal(2)">
-                <img src="images/kandidatarbete/bild 3.jpg" style="width:100%; height:100%; object-fit:cover; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
-              </div>
-            </div>
-            <button onclick="event.stopPropagation(); kandSlide(-1)" style="position:absolute; left:0; top:50%; transform:translateY(-50%); background:var(--black); color:var(--white); border:none; font-family:'Space Mono',monospace; font-size:1rem; padding:.6rem .9rem; cursor:crosshair; z-index:10;">←</button>
-            <button onclick="event.stopPropagation(); kandSlide(1)" style="position:absolute; right:0; top:50%; transform:translateY(-50%); background:var(--black); color:var(--white); border:none; font-family:'Space Mono',monospace; font-size:1rem; padding:.6rem .9rem; cursor:crosshair; z-index:10;">→</button>
-            <div id="kand-slider-counter" style="position:absolute; bottom:.6rem; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.7); color:#aaa; font-size:.65rem; letter-spacing:.1em; padding:.25rem .7rem;">1 / 3</div>
-          </div>
-          <div onclick="openKandModal(3)" style="cursor:zoom-in; background:#111; overflow:hidden; aspect-ratio:1/1.414;">
-            <img src="images/kandidatarbete/poster.jpg" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(15%); transition:filter .2s;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(15%)'" />
-          </div>
-        </div>
-        <p style="font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; color:#444; margin-top:.75rem;">↗ click to enlarge</p>
-      </div>
-    </div>`,
-
-    default: `<p style="color:var(--gray); font-size:.85rem;">Project info coming soon.</p>`,
-  };
-
-  // ─── Card → row mapping (desktop) ────────────────────────────────────────────
-  const cardRow = { 0:'row1', 1:'row1', 2:'row1', 3:'row2', 4:'row2', 5:'row2', 6:'row3' };
-
-  // Track open state per row
-  const rowState = { row1: null, row2: null, row3: null };
-  const overlay = document.getElementById('page-overlay');
-
-  // ─── Mobile detection ─────────────────────────────────────────────────────────
-  function isMobile() { return window.innerWidth <= 900; }
-
-  // Track which card is open on mobile
-  let mobileOpenCard = null;
-
-  // ─── Close ALL dropdowns (desktop rows + mobile panel + card highlights) ──────
-  function closeAll() {
-    // Desktop: close all three row dropdowns unconditionally
-    ['row1','row2','row3'].forEach(rowId => {
-      const row = document.getElementById(rowId);
-      if (row) row.classList.remove('open');
-      const contentEl = document.getElementById('dd-content-' + rowId);
-      if (contentEl) contentEl.innerHTML = '';
-      rowState[rowId] = null;
-    });
-    // Mobile: hide the shared panel
-    const mobPanel = document.getElementById('mob-panel');
-    if (mobPanel) { mobPanel.style.display = 'none'; mobPanel.innerHTML = ''; }
-    mobileOpenCard = null;
-    // Card highlight
-    document.querySelectorAll('.project-wrapper.open').forEach(el => el.classList.remove('open'));
-    overlay.classList.remove('active');
-  }
-
-  // ─── Toggle a project dropdown ────────────────────────────────────────────────
-  function toggleDropdown(cardIndex, rowId) {
-    const pw = document.getElementById('pw-' + cardIndex);
-    const content = projectContent[cardIndex] || projectContent.default;
-
-    if (isMobile()) {
-      // ── Mobile: single shared panel injected right after the clicked card ──
-      const isOpen = mobileOpenCard === cardIndex;
-      closeAll();
-      if (!isOpen) {
-        mobileOpenCard = cardIndex;
-        pw.classList.add('open');
-        // Get or create the shared mobile panel
-        let mobPanel = document.getElementById('mob-panel');
-        if (!mobPanel) {
-          mobPanel = document.createElement('div');
-          mobPanel.id = 'mob-panel';
-          mobPanel.className = 'mobile-dropdown';
-        }
-        // Move it to sit right after the clicked card
-        pw.insertAdjacentElement('afterend', mobPanel);
-        mobPanel.innerHTML = '<div class="project-dropdown">' + content + '</div>';
-        mobPanel.style.display = 'block';
-        setTimeout(() => pw.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-      }
-
-    } else {
-      // ── Desktop: shared dropdown row after each group of 3 ─────────────────
-      const row = document.getElementById(rowId);
-      const contentEl = document.getElementById('dd-content-' + rowId);
-      const isThisOpen = rowState[rowId] === cardIndex;
-
-      closeAll();
-
-      if (!isThisOpen) {
-        pw.classList.add('open');
-        contentEl.innerHTML = content;
-        row.classList.add('open');
-        rowState[rowId] = cardIndex;
-        overlay.classList.add('active');
-        setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
-      }
-    }
-  }
-
-  overlay.addEventListener('click', closeAll);
-
-  document.addEventListener('click', function(e) {
-    const inCard = e.target.closest('.project-wrapper');
-    const inDropdown = e.target.closest('.dropdown-row, #mob-panel');
-    if (!inCard && !inDropdown) closeAll();
+      <div class="p-body"><div class="p-body-inner">${p.body}</div></div>
+    `;
+    list.appendChild(row);
   });
 
-  // ─── Slider logic ─────────────────────────────────────────────────────────────
+  let openIndex = null;
+  function toggleProject(i) {
+    if (openIndex !== null && openIndex !== i) {
+      document.getElementById('p-row-' + openIndex).classList.remove('open');
+    }
+    const row = document.getElementById('p-row-' + i);
+    const isOpen = row.classList.contains('open');
+    row.classList.toggle('open');
+    openIndex = isOpen ? null : i;
+    if (!isOpen) setTimeout(() => row.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+  }
+
   const sliderState = {};
   function slideMove(id, dir) {
     const track = document.getElementById(id + '-track');
@@ -1110,49 +517,18 @@
     if (counter) counter.textContent = (sliderState[id] + 1) + ' / ' + total;
   }
 
-  // ─── Skill bars ───────────────────────────────────────────────────────────────
-  const skillObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.skill-bar').forEach(b => {
-          const w = b.style.getPropertyValue('--w');
-          b.style.setProperty('--w', '0%');
-          setTimeout(() => b.style.setProperty('--w', w), 100);
-        });
-      }
-    });
-  }, { threshold: 0.3 });
-  document.querySelectorAll('.bio-right').forEach(el => skillObs.observe(el));
-
-  // ─── Kandidatarbete slider ────────────────────────────────────────────────────
-  let kandSliderIndex = 0;
-  function kandSlide(dir) {
-    const total = 3;
-    kandSliderIndex = (kandSliderIndex + dir + total) % total;
-    const track = document.getElementById('kand-slider-track');
-    const counter = document.getElementById('kand-slider-counter');
-    if (track) track.style.transform = `translateX(-${kandSliderIndex * 100}%)`;
-    if (counter) counter.textContent = (kandSliderIndex + 1) + ' / ' + total;
-  }
-
-  // ─── Kandidatarbete lightbox ──────────────────────────────────────────────────
   const kandImages = [
     { src: 'images/kandidatarbete/bild 1.jpg', cap: 'Image 1' },
     { src: 'images/kandidatarbete/bild 2.png', cap: 'Image 2' },
     { src: 'images/kandidatarbete/bild 3.jpg', cap: 'Image 3' },
-    { src: 'images/kandidatarbete/poster.jpg',  cap: 'A1 Poster' },
+    { src: 'images/kandidatarbete/poster.jpg', cap: 'A1 Poster' },
   ];
   let kandIndex = 0;
-
   function openKandModal(i) {
     kandIndex = i;
     updateKandModal();
     document.getElementById('kand-modal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
-    // Hide all dropdowns so they don't show beneath the lightbox when scrolling
-    document.querySelectorAll('.dropdown-row').forEach(r => r.style.visibility = 'hidden');
-    const mob = document.getElementById('mob-panel');
-    if (mob) mob.style.visibility = 'hidden';
   }
   function updateKandModal() {
     document.getElementById('kand-modal-img').src = kandImages[kandIndex].src;
@@ -1166,9 +542,6 @@
     if (e && e.target !== document.getElementById('kand-modal')) return;
     document.getElementById('kand-modal').style.display = 'none';
     document.body.style.overflow = '';
-    document.querySelectorAll('.dropdown-row').forEach(r => r.style.visibility = '');
-    const mob = document.getElementById('mob-panel');
-    if (mob) mob.style.visibility = '';
   }
   document.addEventListener('keydown', e => {
     if (document.getElementById('kand-modal').style.display !== 'flex') return;
@@ -1176,42 +549,46 @@
     if (e.key === 'ArrowLeft')  shiftKand(-1);
     if (e.key === 'Escape') closeKandModal({ target: document.getElementById('kand-modal') });
   });
+
+  window.addEventListener('load', () => document.body.classList.add('loaded'));
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 
-<!-- Poster modal -->
-<div id="poster-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.9); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out;">
-  <img src="images/poster/poster.png" style="max-width:90vw; max-height:90vh; object-fit:contain;" />
+<div id="poster-modal" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;">
+  <img src="images/poster/poster.png" style="max-width:90vw;max-height:90vh;object-fit:contain;" />
 </div>
 
-<!-- Mecenat modal -->
-<div id="mecenat-modal" onclick="this.style.display='none'" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.95); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; flex-direction:column; gap:1rem;">
-  <div style="position:relative; width:90vw; max-width:800px;">
-    <div class="slider" id="mecenat-modal-slider" style="border:none; background:transparent;">
+<div id="mecenat-modal" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;flex-direction:column;gap:1rem;">
+  <div style="position:relative;width:90vw;max-width:800px;" onclick="event.stopPropagation();">
+    <div class="slider" id="mecenat-modal-slider">
       <div class="slider-track" id="mecenat-modal-track">
-        <div class="slide"><img src="images/Mecenat/slide1.png" style="object-fit:contain; background:transparent;" /></div>
-        <div class="slide"><img src="images/Mecenat/slide2.png" style="object-fit:contain; background:transparent;" /></div>
-        <div class="slide"><img src="images/Mecenat/slide3.png" style="object-fit:contain; background:transparent;" /></div>
-        <div class="slide"><img src="images/Mecenat/slide4.png" style="object-fit:contain; background:transparent;" /></div>
-        <div class="slide"><img src="images/Mecenat/slide5.png" style="object-fit:contain; background:transparent;" /></div>
-        <div class="slide"><img src="images/Mecenat/slide6.png" style="object-fit:contain; background:transparent;" /></div>
-        <div class="slide"><img src="images/Mecenat/slide7.png" style="object-fit:contain; background:transparent;" /></div>
-        <div class="slide"><img src="images/Mecenat/slide8.png" style="object-fit:contain; background:transparent;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide1.png" style="object-fit:contain;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide2.png" style="object-fit:contain;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide3.png" style="object-fit:contain;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide4.png" style="object-fit:contain;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide5.png" style="object-fit:contain;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide6.png" style="object-fit:contain;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide7.png" style="object-fit:contain;" /></div>
+        <div class="slide"><img src="images/Mecenat/slide8.png" style="object-fit:contain;" /></div>
       </div>
-      <button class="slider-btn prev" onclick="event.stopPropagation(); slideMove('mecenat-modal', -1)">←</button>
-      <button class="slider-btn next" onclick="event.stopPropagation(); slideMove('mecenat-modal', 1)">→</button>
+      <button class="slider-btn prev" onclick="event.stopPropagation();slideMove('mecenat-modal',-1)">←</button>
+      <button class="slider-btn next" onclick="event.stopPropagation();slideMove('mecenat-modal',1)">→</button>
       <div class="slider-counter" id="mecenat-modal-counter">1 / 8</div>
     </div>
   </div>
-  <p style="font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#555;">click anywhere to close</p>
+  <p style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#666;font-family:'IBM Plex Mono',monospace;">click anywhere to close</p>
 </div>
 
-<!-- Kandidatarbete lightbox -->
-<div id="kand-modal" onclick="closeKandModal(event)" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.97); z-index:9999; align-items:center; justify-content:center; flex-direction:column; gap:1rem; cursor:zoom-out;">
-  <button onclick="closeKandModal()" style="position:fixed; top:1.5rem; right:2rem; background:none; border:none; color:#555; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.15em; text-transform:uppercase; cursor:crosshair;">✕ close</button>
-  <button onclick="event.stopPropagation(); shiftKand(-1)" style="position:fixed; left:1.5rem; top:50%; transform:translateY(-50%); background:none; border:1px solid #333; color:#555; font-family:'Space Mono',monospace; font-size:1rem; padding:.7rem 1rem; cursor:crosshair;">←</button>
-  <img id="kand-modal-img" src="" style="max-width:85vw; max-height:85vh; object-fit:contain;" />
-  <p id="kand-modal-cap" style="font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:#444;"></p>
-  <button onclick="event.stopPropagation(); shiftKand(1)" style="position:fixed; right:1.5rem; top:50%; transform:translateY(-50%); background:none; border:1px solid #333; color:#555; font-family:'Space Mono',monospace; font-size:1rem; padding:.7rem 1rem; cursor:crosshair;">→</button>
+<div id="kand-modal" onclick="closeKandModal(event)" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:1rem;cursor:zoom-out;">
+  <button onclick="closeKandModal()" style="position:fixed;top:1.5rem;right:2rem;background:none;border:none;color:#888;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;">✕ close</button>
+  <button onclick="event.stopPropagation();shiftKand(-1)" style="position:fixed;left:1.5rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#888;font-family:'IBM Plex Mono',monospace;font-size:1.2rem;padding:.7rem 1rem;cursor:pointer;">←</button>
+  <img id="kand-modal-img" src="" style="max-width:85vw;max-height:85vh;object-fit:contain;" />
+  <p id="kand-modal-cap" style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#666;font-family:'IBM Plex Mono',monospace;"></p>
+  <button onclick="event.stopPropagation();shiftKand(1)" style="position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);background:none;border:none;color:#888;font-family:'IBM Plex Mono',monospace;font-size:1.2rem;padding:.7rem 1rem;cursor:pointer;">→</button>
 </div>
 
 </body>
